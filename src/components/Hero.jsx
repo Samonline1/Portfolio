@@ -32,11 +32,11 @@ const Hero = forwardRef((props, home) => {
     <h1 className='text-[90px] font-bold text-gray-800/80 '>Developer</h1>
 </div> */}
 
-<div className='absolute bottom-0 right-0  text-white w-full bg-gradient-to-t from-black via-black/80 to-transparent '>
+<div className='absolute bottom-0 right-0  text-white w-full bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/90 to-transparent '>
 
 <div className='flex  flex justify-between m-10 lg:mx-20 '>
 <div >
-<p className='text-xl font-bold'>Sameer Hussain</p>
+<h1 className='text-xl font-bold '>Sameer Hussain</h1>
 <p className='text-gray-700'>Designer & Developer</p>
 </div>
 <div className='text-3xl flex gap-3'>

@@ -35,19 +35,19 @@ const Skills = () => {
   }, [isInView])
   
   return (
-    <div className="bg-black p-10  lg:p-20 lg:pt-30 h-[80vh] space-y-6 flex flex-col gap-10 ">
+    <div className="bg-[#0B0B0D] p-10 lg:px-40 lg:p-20 lg:pt-30 h-[80vh] space-y-6 flex flex-col gap-10 ">
       <div>
-        <h1 className="font-bold text-lg">About</h1>
-        <motion.p ref={ref}>
+        <h1 className="font-bold text-2xl">About</h1>
+        <motion.p className="text-gray-400 mt-4" ref={ref}>
             {typed}
 
         </motion.p>
       </div>
 
       <div className="">
-                <h1 className="font-bold text-lg">About</h1>
+                <h1 className="font-bold text-2xl">Skills</h1>
 
-             <h1>Things I'm good at</h1>
+             <h1 className="text-gray-500">Things I'm good at</h1>
         <div className=" h-full w-full overflow-x-auto  text-white pt-5">
           {/* <DiNodejs /> */}
           <div className="w-full lg:w-[80%] grid grid-cols-4 lg:grid-cols-5  lg:text-6xl gap-6 text-6xl">
