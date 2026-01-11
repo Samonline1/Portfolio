@@ -1,5 +1,4 @@
 import React from "react";
-import { DiHtml5 } from "react-icons/di";
 
 import {
   FaCss3Alt,
@@ -11,60 +10,79 @@ import {
 } from "react-icons/fa";
 import { SiVercel, SiRedux, SiReactrouter } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
 import { useEffect, useRef } from "react";
 
-
-
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  const text =" I’m a frontend developer passionate about creating fast, dynamic, and user-focused applications. I enjoy building scalable React apps with clean UI, real-world functionality, and intuitive user experiences. My work includes large-scale clones like Netflix and Amazon and real-impact tools like a college exam timetable system used by over 500 students."
-  const count = useMotionValue(0)
-  const typed = useTransform(count, v => text.slice(0, v))
+  const text =
+    " I’m a frontend developer passionate about creating fast, dynamic, and user-focused applications. I enjoy building scalable React apps with clean UI, real-world functionality, and intuitive user experiences. My work includes large-scale clones like Netflix and Amazon and real-impact tools like a college exam timetable system used by over 500 students.";
+  const count = useMotionValue(0);
+  const typed = useTransform(count, (v) => text.slice(0, v));
 
   useEffect(() => {
     if (isInView) {
       animate(count, text.length, {
         duration: 2.5,
         ease: "easeInOut",
-      })
+      });
     }
-  }, [isInView])
-  
+  }, [isInView]);
+
   return (
-    <div className="bg-[#0B0B0D] p-10 lg:px-40 lg:p-20 lg:pt-30 h-[80vh] space-y-6 flex flex-col gap-10 ">
+    <div className=" p-10 lg:px-40 lg:p-20 lg:pt-30 space-y-6 flex flex-col gap-10 ">
       <div>
         <h1 className="font-bold text-2xl">About</h1>
         <motion.p className="text-gray-400 mt-4" ref={ref}>
-            {typed}
-
+          {typed}
         </motion.p>
       </div>
 
-      <div className="">
-                <h1 className="font-bold text-2xl">Skills</h1>
+      <div className="overflow-hidden w-full pt-5">
+        <h1 className="font-bold text-2xl">Skills</h1>
+        <p className="text-gray-400 mt-4">Things I'm good at</p>
+        <div className="flex gap-10 w-max skill-scroll text-6xl lg:text-8xl pt-5">
+          {[
+            <FaReact />,
+            <FaHtml5 />,
+            <FaCss3Alt />,
+            <RiTailwindCssFill />,
+            <FaBootstrap />,
+            <FaJsSquare />,
+            <FaGithub />,
+            <SiVercel />,
+            <SiRedux />,
+            <SiReactrouter />,
 
-             <h1 className="text-gray-500">Things I'm good at</h1>
-        <div className=" h-full w-full overflow-x-auto  text-white pt-5">
-          {/* <DiNodejs /> */}
-          <div className="w-full lg:w-[80%] grid grid-cols-4 lg:grid-cols-5  lg:text-6xl gap-6 text-6xl">
-          <FaReact className="hover:text-blue-900" />
-          <FaHtml5 />
-          <FaCss3Alt />
-          <RiTailwindCssFill />
-          <FaBootstrap />
-          <FaJsSquare />
-          <FaGithub />
-          <SiVercel />
-          <SiRedux />
-          <SiReactrouter />
-          </div>
+            // duplicate for infinite scroll
+            <FaReact />,
+            <FaHtml5 />,
+            <FaCss3Alt />,
+            <RiTailwindCssFill />,
+            <FaBootstrap />,
+            <FaJsSquare />,
+            <FaGithub />,
+            <SiVercel />,
+            <SiRedux />,
+            <SiReactrouter />,
+          ].map((Icon, i) => (
+            <div
+              key={i}
+              className="p-3 rounded-xl hover:scale-120 hover:text-purple-900 transition-transform duration-300 cursor-pointer"
+            >
+              {Icon}
+            </div>
+          ))}
         </div>
       </div>
-      
     </div>
   );
 };

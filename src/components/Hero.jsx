@@ -1,57 +1,84 @@
-import React, {forwardRef} from 'react'
-import img from '/src/assets/GeminiBannerUp.png'
+import React, { forwardRef } from "react";
+import img from "/src/assets/GeminiBannerUp.png";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+
 import {
-  FaCss3Alt,
-  FaJsSquare,
   FaGithub,
   FaLinkedin,
-  FaReact,
-  FaBootstrap,
-  FaHtml5,
 } from "react-icons/fa";
 
-
 const Hero = forwardRef((props, home) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // subtle movement (important)
+  const moveX = useTransform(x, [-0.5, 0.5], [-20, 0]);
+  const moveY = useTransform(y, [-0.5, 0.5], [-20, 20]);
+
+  const handleMouseMove = (e) => {
+    const { innerWidth, innerHeight } = window;
+
+    x.set(e.clientX / innerWidth - 0.5);
+    y.set(e.clientY / innerHeight - 0.5);
+  };
+
   return (
-    <div ref={home} className='p-10 h-[100vh] bg-gradient-to-b from-black via-black to-gray-800 text-white '
-    style={{
-        backgroundImage: `url(${img})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+    <div
+      ref={home}
+      className="h-full lg:h-[100vh] bg-gradient-to-t from-purple-900/10 via-black to-black text-white border-b border-purple-800 relative overflow-hidden"
     >
-        {/* nav */}
-{/* <nav className='flex items-center justify-between '>
-    <p className='text-xl font-bold text-white'>Portfolio</p>
-    <p className='text-lg text-gray-300'>Discover my projects, skills, and experience.</p> 
-    <button className='bg-green-600 px-3 py-1 rounded-2xl text-black'>Contact</button>
-</nav> */}
+      <div className="h-full flex flex-col justify-center items-center ">
+        <div className="text-scroll w-full h-32 overflow-hidden flex items-center">
+          <div className="text-track text-purple-800 font-extrabold text-8xl uppercase">
+            <p className="text-item ">frontend</p>
+            <p className="text-item ">frontend </p>
+            <p className="text-item ">frontend </p>
+            <p className="text-item ">frontend </p>
+          </div>
+        </div>
 
-{/* <div className=' flex flex-col justify-center items-center h-full'>
-    <h4 className='text-[55px] font-bold text-gray-800/80'>Frontend</h4>
-    <h1 className='text-[90px] font-bold text-gray-800/80 '>Developer</h1>
-</div> */}
+        <div className="text-scroll w-full h-32 overflow-hidden flex items-center">
+          <div className="text-trackreverse text-outline-purple font-extrabold text-8xl uppercase font-family: 'Arial Black', Gadget, sans-serif;">
+            <p className="text-item">developer. </p>
+            <p className="text-item ">developer. </p>
+            <p className="text-item ">developer. </p>
+            <p className="text-item ">developer. </p>
+          </div>
+        </div>
+      </div>
 
-<div className='absolute bottom-0 right-0  text-white w-full bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/90 to-transparent '>
+      <motion.div
+        onMouseMove={handleMouseMove}
+        ref={home}
+        className="flex justify-center items-center absolute inset-0 h-400 sm:mt-25 mt-36 h-full lg:h-full lg:mt-20 w-full hover:cursor-none"
+        style={{
+          backgroundImage: `url(${img})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center top",
+          x: moveX,
+          y: moveY,
+        }}
+      />
 
-<div className='flex  flex justify-between m-10 lg:mx-20 '>
-<div >
-<h1 className='text-xl font-bold '>Sameer Hussain</h1>
-<p className='text-gray-700'>Designer & Developer</p>
-</div>
-<div className='text-3xl flex gap-3'>
-  <FaGithub />
-  <FaLinkedin />
-
-</div>
-</div>
-</div>
-
-
-
-
+      <div className="absolute bottom-0 right-0  text-white w-full  ">
+        <div className="flex  flex justify-between m-10 lg:mx-20 ">
+          <div>
+            <h1 className="text-xl font-bold shine-text ">Sameer Hussain</h1>
+            <p className="text-gray-700">Designer & Developer</p>
+          </div>
+          <div className="text-3xl flex gap-3">
+            <a href="https://github.com/Samonline1">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/sameer-hussain-6829222a6">
+              <FaLinkedin />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-})
+  );
+});
 
-export default Hero
+export default Hero;

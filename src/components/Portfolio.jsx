@@ -1,21 +1,23 @@
-import React, { use, useRef } from 'react'
-import Hero from './Hero'
-import About from './About'
-import Projects from './Projects'
-import Contact from './Contact'
-import { motion, useScroll } from "motion/react"
-
+import React, { useState, useRef } from "react";
+import Hero from "./Hero";
+import About from "./About";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import { motion, useScroll } from "motion/react";
+import Loading from "./Loading";
 
 const Portfolio = () => {
-   
-const { scrollYProgress } = useScroll()
+  const { scrollYProgress } = useScroll();
 
-const home = useRef(null);
-const about = useRef(null);
-const proj = useRef(null);
-const contact = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-const lightRef = useRef(null);  // Ref for the light element
+
+  const home = useRef(null);
+  const about = useRef(null);
+  const proj = useRef(null);
+  const contact = useRef(null);
+
+  const lightRef = useRef(null); // Ref for the light element
 
   const handleMove = (e) => {
     if (!lightRef.current) return;
@@ -31,10 +33,7 @@ const lightRef = useRef(null);  // Ref for the light element
     if (lightRef.current) lightRef.current.style.opacity = 0;
   };
 
-
   return (
-    
-    
     // <div className="overflow-x-scroll overflow-y-hidden w-screen h-screen">
     //   <div className="w-max">
     //     <section className="w-screen h-screen"><Hero /></section>
@@ -43,44 +42,65 @@ const lightRef = useRef(null);  // Ref for the light element
     //     <section className="w-screen h-screen"><Contact /></section>
     //   </div>
     // </div>
+  <>
+      {/* INTRO LOADER */}
+      {isLoading && <Loading onFinish={() => setIsLoading(false)} />}
 
-     <div className=' h-screen w-full ' 
-     onMouseMove={handleMove}
+      {/* MAIN CONTENT */}
+      {!isLoading && (
+
+    <div
+      className=" h-screen w-full "
+      onMouseMove={handleMove}
       onMouseEnter={showLight}
       onMouseLeave={hideLight}
     >
-      {/* BACKGROUND LIGHT FOLLOWING CURSOR */}
+      {/* BACKGROUND LIGHT FOLLOWING CURSOR  */}
       <div
         ref={lightRef}
         className="pointer-events-none fixed w-50 h-50 rounded-full bg-purple-600/30 blur-3xl opacity-0 transition-opacity duration-800 -translate-x-1/2 -translate-y-1/2 z-3"
       />
-  
 
+      <motion.div
+        className="h-4 w-full origin-left bg-purple-800 fixed z-5"
+        style={{ scaleX: scrollYProgress }}
+      />
 
-      <motion.div className='h-4 w-full origin-left bg-purple-800 fixed z-5' style={{ scaleX: scrollYProgress }} />
-      
-      <div className='lg:w-100 w-80   h-12 bg-black/60 backdrop-blur-[1px] border border-gray-900 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center  px-5'>
-       <button className='hover:bg-purple-700 py-1 px-3 rounded-full' onClick={() => home.current.scrollIntoView({ behavior: "smooth" })}
+      <div className="lg:w-100 w-80   h-12 bg-black/60 backdrop-blur-[1px] border border-purple-800 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center  px-5">
+        <button
+          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          onClick={() => home.current.scrollIntoView({ behavior: "smooth" })}
         >
-  Home
-</button>
-<button className='hover:bg-purple-700 py-1 px-3 rounded-full' onClick={() => about.current.scrollIntoView({ behavior: "smooth" })}>
-  About
-</button>
-<button className='hover:bg-purple-700 py-1 px-3 rounded-full' onClick={() => proj.current.scrollIntoView({ behavior: "smooth" })}>
-  Projects
-</button>
-<button className='hover:bg-purple-700 py-1 px-3 rounded-full' onClick={() => contact.current.scrollIntoView({ behavior: "smooth" })}>
-  Contact
-</button>
+          Home
+        </button>
+        <button
+          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          onClick={() => about.current.scrollIntoView({ behavior: "smooth" })}
+        >
+          About
+        </button>
+        <button
+          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          onClick={() => proj.current.scrollIntoView({ behavior: "smooth" })}
+        >
+          Projects
+        </button>
+        <button
+          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          onClick={() => contact.current.scrollIntoView({ behavior: "smooth" })}
+        >
+          Contact
+        </button>
       </div>
+      <Loading />
+      <Hero ref={home} />
+      <About ref={about} />
+      <Projects ref={proj} />
+      <Contact ref={contact} />
+    </div>
+   )}
+    </>
+  );
+};
 
-        <Hero  ref={home} />
-        <About ref={about} />
-        <Projects ref={proj} />
-        <Contact ref={contact} />
-     </div>
-  )
-}
-
-export default Portfolio
+export default Portfolio;
