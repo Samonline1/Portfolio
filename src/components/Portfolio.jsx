@@ -68,25 +68,25 @@ const Portfolio = () => {
 
       <div className="lg:w-100 w-80   h-12 bg-black/60 backdrop-blur-[1px] border border-purple-800 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center  px-5">
         <button
-          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
           onClick={() => home.current.scrollIntoView({ behavior: "smooth" })}
         >
           Home
         </button>
         <button
-          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
           onClick={() => about.current.scrollIntoView({ behavior: "smooth" })}
         >
           About
         </button>
         <button
-          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
           onClick={() => proj.current.scrollIntoView({ behavior: "smooth" })}
         >
           Projects
         </button>
         <button
-          className="hover:bg-purple-700 py-1 px-3 rounded-full"
+          className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
           onClick={() => contact.current.scrollIntoView({ behavior: "smooth" })}
         >
           Contact
