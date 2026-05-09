@@ -1,16 +1,57 @@
-# React + Vite
+# Sameer Hussain Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern developer portfolio built with React and Vite, focused on presenting full-stack MERN skills, featured projects, and a clean interactive UI.
 
-Currently, two official plugins are available:
+Live Site: https://samonline1.github.io/Portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+This portfolio highlights:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Full Stack Developer branding and profile copy
+- Responsive hero, about, skills, projects, and contact sections
+- Smooth motion effects with lightweight loading and reveal animations
+- Lazy-loaded visuals and deferred lower-page sections for better perceived performance
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite
+- Tailwind CSS 4
+- Framer Motion / Motion
+- React Icons
+
+## Featured Skills
+
+- Languages: JavaScript (ES6+), HTML5, CSS3
+- Frontend: React.js, Redux Toolkit, Tailwind CSS, Bootstrap, Responsive Web Design
+- Backend: Node.js, Express.js, REST API Design, JWT Authentication, Middleware Engineering
+- Database: MongoDB, Mongoose ODM, Schema Design
+- Tools & Platforms: Git, GitHub, NPM, Vite, Vercel, Netlify
+
+## Projects
+
+- Cartify — Full Stack E-Commerce Platform
+- Exam Timetable Live — Student Utility Platform
+- Sympto API — RESTful Health Search API
+- Netflix Clone
+- Amazon Clone
+- Paste App
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open the local development URL shown by Vite in your browser.
+
+## Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```

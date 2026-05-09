@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import img from "/src/assets/GeminiBannerUp.png";
+import img from "/src/assets/GeminiBannerUp.webp";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import {
@@ -30,10 +30,10 @@ const Hero = forwardRef((props, home) => {
       <div className="h-full flex flex-col justify-center items-center ">
         <div className="text-scroll w-full h-32 overflow-hidden flex items-center">
           <div className="text-track text-purple-800 font-extrabold text-8xl uppercase">
-            <p className="text-item ">frontend</p>
-            <p className="text-item ">frontend </p>
-            <p className="text-item ">frontend </p>
-            <p className="text-item ">frontend </p>
+            <p className="text-item ">fullstack</p>
+            <p className="text-item ">fullstack </p>
+            <p className="text-item ">fullstack </p>
+            <p className="text-item ">fullstack </p>
           </div>
         </div>
 
@@ -47,15 +47,19 @@ const Hero = forwardRef((props, home) => {
         </div>
       </div>
 
-      <motion.div
+      <motion.img
         onMouseMove={handleMouseMove}
-        ref={home}
+        src={img}
+        alt="Sameer Hussain hero banner"
+        loading="lazy"
+        decoding="async"
         className="flex justify-center items-center absolute inset-0 h-400 sm:mt-25 mt-36 h-full lg:h-full lg:mt-20 w-full hover:cursor-none"
+        initial={{ opacity: 0, filter: "blur(18px)", scale: 1.03 }}
+        animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
         style={{
-          backgroundImage: `url(${img})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center top",
+          objectFit: "contain",
+          objectPosition: "center top",
           x: moveX,
           y: moveY,
         }}
@@ -65,7 +69,7 @@ const Hero = forwardRef((props, home) => {
         <div className="flex  flex justify-between m-10 lg:mx-20 ">
           <div>
             <h1 className="text-xl font-bold shine-text ">Sameer Hussain</h1>
-            <p className="text-gray-700">Designer & Developer</p>
+            <p className="text-gray-700">Full Stack Developer</p>
           </div>
           <div className="text-3xl flex gap-3">
             <a href="https://github.com/Samonline1">
