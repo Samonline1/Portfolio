@@ -1,6 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
-  FaBootstrap,
   FaCss3Alt,
   FaGitAlt,
   FaGithub,
@@ -12,7 +12,6 @@ import {
 import { RiTailwindCssFill } from "react-icons/ri";
 import {
   SiExpress,
-  SiGithub,
   SiJsonwebtokens,
   SiMongodb,
   SiMongoose,
@@ -22,55 +21,82 @@ import {
   SiVercel,
   SiVite,
 } from "react-icons/si";
-import {
-  motion,
-} from "framer-motion";
 
 const Skills = () => {
-  const text = "Full Stack Developer with hands-on experience building scalable MERN stack applications. Developed end-to-end features including REST APIs, JWT authentication, server-side cart systems, and real-time UI components. Built applications used by 200+ students concurrently, with a strong focus on performance, clean architecture, and intuitive user experience.";
+  const text = "I am a B.Tech CSE student focused on full-stack product engineering using the MERN stack. I build practical software that solves real problems, with an emphasis on clean architecture, responsive UI, backend systems, authentication, and production-ready workflows.";
 
-  const skills = [
-    { label: "JavaScript (ES6+)", icon: <FaJsSquare /> },
-    { label: "HTML5", icon: <FaHtml5 /> },
-    { label: "CSS3", icon: <FaCss3Alt /> },
-    { label: "React.js", icon: <FaReact /> },
-    { label: "Redux Toolkit", icon: <SiRedux /> },
-    { label: "Tailwind CSS", icon: <RiTailwindCssFill /> },
-    { label: "Bootstrap", icon: <FaBootstrap /> },
-    { label: "Node.js", icon: <FaNodeJs /> },
-    { label: "Express.js", icon: <SiExpress /> },
-    { label: "JWT Authentication", icon: <SiJsonwebtokens /> },
-    { label: "MongoDB", icon: <SiMongodb /> },
-    { label: "Mongoose ODM", icon: <SiMongoose /> },
-    { label: "Git", icon: <FaGitAlt /> },
-    { label: "GitHub", icon: <SiGithub /> },
-    { label: "NPM", icon: <SiNpm /> },
-    { label: "Vite", icon: <SiVite /> },
-    { label: "Vercel", icon: <SiVercel /> },
-    { label: "Netlify", icon: <SiNetlify /> },
-    { label: "Source Control", icon: <FaGithub /> },
+  const focusAreas = [
+    "Backend APIs and authentication systems",
+    "Scalable MERN applications",
+    "Real-world user workflows",
+    "Performance and clean architecture",
+    "Turning ideas into usable products",
   ];
 
   const skillGroups = [
-    "Languages: JavaScript (ES6+), HTML5, CSS3",
-    "Frontend: React.js, Redux Toolkit, Tailwind CSS, Bootstrap, Responsive Web Design",
-    "Backend: Node.js, Express.js, REST API Design, JWT Authentication, Middleware Engineering",
-    "Database: MongoDB, Mongoose ODM, Schema Design",
-    "Tools & Platforms: Git, GitHub, NPM, Vite, Vercel, Netlify",
+    {
+      title: "Frontend",
+      items: [
+        { label: "HTML5", icon: <FaHtml5 /> },
+        { label: "CSS3", icon: <FaCss3Alt /> },
+        { label: "JavaScript", icon: <FaJsSquare /> },
+        { label: "React.js", icon: <FaReact /> },
+        { label: "Redux Toolkit", icon: <SiRedux /> },
+        { label: "Tailwind CSS", icon: <RiTailwindCssFill /> },
+      ],
+    },
+    {
+      title: "Backend",
+      items: [
+        { label: "Node.js", icon: <FaNodeJs /> },
+        { label: "Express.js", icon: <SiExpress /> },
+        { label: "REST APIs", icon: <SiJsonwebtokens /> },
+        { label: "JWT Authentication", icon: <SiJsonwebtokens /> },
+        { label: "MongoDB", icon: <SiMongodb /> },
+        { label: "Mongoose ODM", icon: <SiMongoose /> },
+      ],
+    },
+    {
+      title: "Tools",
+      items: [
+        { label: "Git", icon: <FaGitAlt /> },
+        { label: "GitHub", icon: <FaGithub /> },
+        { label: "NPM", icon: <SiNpm /> },
+        { label: "Vite", icon: <SiVite /> },
+        { label: "Vercel", icon: <SiVercel /> },
+        { label: "Netlify", icon: <SiNetlify /> },
+      ],
+    },
+  ];
+
+  const exploring = [
+    "Advanced backend architecture",
+    "AI integration in web applications",
+    "System design fundamentals",
+    "Production-ready full-stack engineering",
+  ];
+
+  const openTo = [
+    "Software Engineering Internships",
+    "Frontend / Full-Stack Roles",
+    "Freelance Development",
+    "Open Source Collaboration",
   ];
 
   return (
-    <div className="p-10 lg:px-32 xl:px-40 lg:p-20 lg:pt-30 space-y-8 flex flex-col gap-12">
+    <div className="px-4 sm:px-6 lg:px-32 xl:px-40 py-16 lg:py-20 space-y-12">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full max-w-5xl min-h-[260px] sm:min-h-[280px] lg:min-h-[320px] rounded-3xl border border-purple-900/70 bg-gradient-to-br from-purple-950/20 via-black to-black/90 px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 shadow-[0_0_40px_rgba(107,33,168,0.08)]"
+        className="w-full max-w-5xl rounded-3xl border border-white/10 bg-white/5 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 shadow-[0_0_40px_rgba(0,0,0,0.2)] backdrop-blur-sm"
       >
-        <h1 className="font-bold text-2xl">About</h1>
+        <p className="text-xs uppercase tracking-[0.35em] text-purple-300">
+          About
+        </p>
         <motion.p
-          className="text-gray-300 mt-5 text-base sm:text-lg leading-8 max-w-4xl"
+          className="mt-4 max-w-4xl text-base sm:text-lg leading-8 text-gray-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -78,28 +104,88 @@ const Skills = () => {
         >
           {text}
         </motion.p>
-      </motion.div>
-
-      <div className="overflow-hidden w-full pt-5">
-        <h1 className="font-bold text-2xl">Skills</h1>
-        <p className="text-gray-400 mt-4">
-          Building complete products across frontend, backend, database, and deployment.
-        </p>
-        <div className="flex gap-10 w-max skill-scroll text-6xl lg:text-8xl pt-5">
-          {[...skills, ...skills].map((skill, index) => (
-            <div
-              key={`${skill.label}-${index}`}
-              className="p-3 rounded-xl hover:scale-120 hover:text-purple-900 transition-transform duration-300 cursor-pointer"
-              title={skill.label}
+        <div className="mt-6 flex flex-wrap gap-2">
+          {["MERN", "CSE Student", "Full-Stack Product Engineering", "Responsive UI", "Backend Systems"].map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs sm:text-sm text-gray-100"
             >
-              {skill.icon}
-            </div>
+              {item}
+            </span>
           ))}
         </div>
-        <div className="mt-6 space-y-3 text-gray-400">
-          {skillGroups.map((group) => (
-            <p key={group}>{group}</p>
-          ))}
+      </motion.div>
+
+      <div className="w-full max-w-5xl space-y-8">
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-purple-300">
+              I enjoy
+            </h2>
+            <div className="mt-4 space-y-3 text-gray-300">
+              {focusAreas.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-purple-300">
+              Exploring
+            </h2>
+            <div className="mt-4 space-y-3 text-gray-300">
+              {exploring.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-purple-300">
+              Open to
+            </h2>
+            <div className="mt-4 space-y-3 text-gray-300">
+              {openTo.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-5 pt-2">
+          <div className="flex flex-col gap-2">
+            <p className="text-xs uppercase tracking-[0.3em] text-purple-300">
+              Skills
+            </p>
+            <h2 className="text-2xl font-semibold">My stack</h2>
+            <p className="max-w-2xl text-sm sm:text-base text-gray-400">
+              Tools and technologies I use across frontend, backend, and deployment.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {skillGroups.map((group) => (
+              <div
+                key={group.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5"
+              >
+                <h3 className="text-sm uppercase tracking-[0.25em] text-gray-300">
+                  {group.title}
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item.label}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs sm:text-sm text-gray-100"
+                    >
+                      <span className="text-purple-300">{item.icon}</span>
+                      <span>{item.label}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

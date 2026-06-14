@@ -1,9 +1,10 @@
 import React, { forwardRef } from "react";
-import Netflix from "/src/assets/netflix.png";
 import Cartify from "/src/assets/cartify.png";
 import JSU from "/src/assets/JSU.png";
 import Sympto from "/src/assets/Sympto.png";
 import Dx from "/src/assets/dx.png";
+import CS from "/src/assets/CS.png";
+import KYB from "/src/assets/KYB.png";
 
 import { VscGithub } from "react-icons/vsc";
 import { MdLaunch } from "react-icons/md";
@@ -18,12 +19,27 @@ const projects = [
     image: Cartify,
   },
   {
-    title: "Exam Timetable Live",
-    subtitle: "Student Utility Platform",
-    stack: ["React JS", "Tailwind", "Framer"],
-    github: "https://github.com/Samonline1/TimeTable",
-    live: "https://jsu-time-table.netlify.app/",
-    image: JSU,
+    title: "CineScoop",
+    subtitle: "Movie discovery app",
+    stack: ["React JS", "Redux", "Catching", "API"],
+    github: "https://github.com/Samonline1/CineScope",
+    live: "https://cine-scoope.netlify.app/",
+    image: CS,
+  },
+  {
+    title: "DX ERP",
+    subtitle: "Unified ERP Platform",
+    stack: ["Firebase", "CRUD", "AUTH", "TypeScript"],
+    live: "https://dxerp.netlify.app/",
+    image: Dx,
+  },
+
+  {
+    title: "KYB - Know Your Broker",
+    subtitle: "Verified Brokers Platform",
+    stack: ["Next JS", "TypeScript", "tailwind"],
+    live: "https://knowyourbroker.site/",
+    image: KYB,
   },
   {
     title: "Sympto API",
@@ -34,19 +50,12 @@ const projects = [
     image: Sympto,
   },
   {
-    title: "Netflix Clone",
-    subtitle: "Frontend UI",
-    stack: ["React JS", "CRUD", "AUTH", "API"],
-    github: "https://github.com/Samonline1/Netflix",
-    live: "https://netiflux.netlify.app/",
-    image: Netflix,
-  },
-   {
-    title: "DX ERP",
-    subtitle: "Unified ERP Platform",
-    stack: ["Firebase", "CRUD", "AUTH", "TypeScript"],
-    live: "https://dxerp.netlify.app/",
-    image: Dx,
+    title: "Exam Timetable Live",
+    subtitle: "Student Utility Platform",
+    stack: ["React JS", "Tailwind", "Framer"],
+    github: "https://github.com/Samonline1/TimeTable",
+    live: "https://jsu-time-table.netlify.app/",
+    image: JSU,
   },
   // {
   //   title: "Amazon Clone",
@@ -70,62 +79,83 @@ const Projects = forwardRef((props, proj) => {
   return (
     <div
       ref={proj}
-      className="p-10 pt-20 lg:pt-5 space-y-5 text-white lg:px-40"
+      className="px-4 sm:px-6 lg:px-40 py-16 lg:py-20 space-y-6 text-white"
     >
-      <h1 className="font-bold text-2xl">Projects</h1>
+      <div className="flex flex-col gap-2">
+        <h1 className="font-bold text-3xl sm:text-4xl">Projects</h1>
+        <p className="max-w-2xl text-sm sm:text-base text-gray-300">
+          A curated look at the work I have built, organized as full-width list
+          items for easier scanning on every screen size.
+        </p>
+      </div>
 
-      <div className="w-full flex space-x-10">
-        <div className="pb-10 w-full flex flex-col lg:grid lg:grid-cols-2 gap-6">
-          {projects.map((project) => (
+      <div className="w-full">
+        <div className="flex flex-col gap-5">
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="border border-purple-900 lg:w-[480px] w-full h-[250px] lg:h-[270px] rounded-xl bg-red-800 flex-shrink-0 grayscale hover:grayscale-0 transition duration-300 hover:scale-105 relative overflow-hidden"
+              className="group w-full overflow-hidden rounded-2xl border border-purple-900/70 bg-white/5 backdrop-blur-sm shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-purple-500/70"
             >
-              {project.image ? (
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : null}
-              <div
-                className={`p-4 h-full flex justify-between items-end rounded-xl relative z-10 ${
-                  project.image
-                    ? "bg-gradient-to-t from-black/80 to-transparent"
-                    : "bg-gradient-to-t from-black/90 via-black/60 to-black/30"
-                }`}
-              >
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">
-                      {project.title}
-                    </h1>
-                    <p className="text-sm text-gray-300 mt-1">{project.subtitle}</p>
-                  </div>
-
-                  <div className="flex gap-3 w-full flex-wrap">
-                    {project.stack.map((item) => (
-                      <p
-                        key={item}
-                        className="px-3 py-1 text-xs sm:text-sm lg:text-base bg-black/70 border border-gray-700 hover:border-gray-300 rounded-xl"
-                      >
-                        {item}
-                      </p>
-                    ))}
-                  </div>
+              <div className="flex flex-col md:flex-row">
+                <div className="relative w-full md:w-[28%] min-h-[220px] md:min-h-[260px]">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  ) : null}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent md:bg-gradient-to-r md:from-black/50 md:via-transparent md:to-transparent" />
                 </div>
 
-                <div className="flex text-2xl sm:text-3xl lg:text-4xl gap-4">
-                  <a href={project.github}>
-                    <VscGithub />
-                  </a>
-                  {project.live ? (
-                    <a href={project.live}>
-                      <MdLaunch />
-                    </a>
-                  ) : null}
+                <div className="flex flex-1 flex-col justify-between gap-5 p-5 sm:p-6 md:p-7">
+                  <div className="space-y-4">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-xs uppercase tracking-[0.3em] text-purple-300">
+                        Project {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <h2 className="text-2xl sm:text-3xl font-bold">
+                        {project.title}
+                      </h2>
+                      <p className="max-w-3xl text-sm sm:text-base text-gray-300">
+                        {project.subtitle}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-xs sm:text-sm text-gray-100"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4 text-sm">
+                    {project.github ? (
+                      <a
+                        href={project.github}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 transition hover:border-white/40 hover:bg-white/10"
+                      >
+                        <VscGithub className="text-lg" />
+                        GitHub
+                      </a>
+                    ) : null}
+                    {project.live ? (
+                      <a
+                        href={project.live}
+                        className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/15 px-4 py-2 transition hover:border-purple-300/70 hover:bg-purple-500/25"
+                      >
+                        <MdLaunch className="text-lg" />
+                        Live Demo
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>

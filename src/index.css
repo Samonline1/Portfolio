@@ -27,24 +27,6 @@ h1{
   scrollbar-width: none; 
 }
 
-@keyframes skillScroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.skill-scroll {
-  animation: skillScroll 18s linear infinite;
-}
-
-.skill-scroll:hover {
-  animation-play-state: paused;
-}
-
-
 .text-scroll {
   width: 100%;
   overflow: hidden;
