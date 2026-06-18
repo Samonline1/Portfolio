@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   FaCss3Alt,
   FaGitAlt,
@@ -85,25 +84,13 @@ const Skills = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-32 xl:px-40 py-16 lg:py-20 space-y-12">
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full max-w-5xl rounded-3xl border border-white/10 bg-white/5 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 shadow-[0_0_40px_rgba(0,0,0,0.2)] backdrop-blur-sm"
-      >
+      <div className="w-full max-w-5xl rounded-3xl border border-white/10 bg-white/5 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 shadow-[0_0_40px_rgba(0,0,0,0.2)] backdrop-blur-sm">
         <p className="text-xs uppercase tracking-[0.35em] text-purple-300">
           About
         </p>
-        <motion.p
-          className="mt-4 max-w-4xl text-base sm:text-lg leading-8 text-gray-300"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
-        >
+        <p className="mt-4 max-w-4xl text-base sm:text-lg leading-8 text-gray-300">
           {text}
-        </motion.p>
+        </p>
         <div className="mt-6 flex flex-wrap gap-2">
           {["MERN", "CSE Student", "Full-Stack Product Engineering", "Responsive UI", "Backend Systems"].map((item) => (
             <span
@@ -114,7 +101,7 @@ const Skills = () => {
             </span>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       <div className="w-full max-w-5xl space-y-8">
         <div className="grid gap-6 md:grid-cols-3">

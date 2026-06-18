@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import img from "/src/assets/GeminiBannerUp.webp";
-import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import {
   FaGithub,
@@ -8,20 +7,6 @@ import {
 } from "react-icons/fa";
 
 const Hero = forwardRef((props, home) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  // subtle movement (important)
-  const moveX = useTransform(x, [-0.5, 0.5], [-20, 0]);
-  const moveY = useTransform(y, [-0.5, 0.5], [-20, 20]);
-
-  const handleMouseMove = (e) => {
-    const { innerWidth, innerHeight } = window;
-
-    x.set(e.clientX / innerWidth - 0.5);
-    y.set(e.clientY / innerHeight - 0.5);
-  };
-
   return (
     <div
       ref={home}
@@ -47,22 +32,13 @@ const Hero = forwardRef((props, home) => {
         </div>
       </div>
 
-      <motion.img
-        onMouseMove={handleMouseMove}
+      <img
         src={img}
         alt="Sameer Hussain hero banner"
         loading="lazy"
         decoding="async"
         className="flex justify-center items-center absolute inset-0 h-400 sm:mt-25 mt-36 h-full lg:h-full lg:mt-20 w-full hover:cursor-none"
-        initial={{ opacity: 0, filter: "blur(18px)", scale: 1.03 }}
-        animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
-        style={{
-          objectFit: "contain",
-          objectPosition: "center top",
-          x: moveX,
-          y: moveY,
-        }}
+        style={{ objectFit: "contain", objectPosition: "center top" }}
       />
 
       <div className="absolute bottom-0 right-0  text-white w-full  ">

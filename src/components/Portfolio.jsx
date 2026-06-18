@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useRef, useState } from "react";
 import Hero from "./Hero";
-import { motion, useScroll } from "motion/react";
 import Loading from "./Loading";
 
 const About = lazy(() => import("./About"));
@@ -8,8 +7,6 @@ const Projects = lazy(() => import("./Projects"));
 const Contact = lazy(() => import("./Contact"));
 
 const Portfolio = () => {
-  const { scrollYProgress } = useScroll();
-
   const [isLoading, setIsLoading] = useState(true);
 
 
@@ -61,10 +58,7 @@ const Portfolio = () => {
             className="pointer-events-none fixed w-50 h-50 rounded-full bg-purple-600/30 blur-3xl opacity-0 transition-opacity duration-800 -translate-x-1/2 -translate-y-1/2 z-3"
           />
 
-          <motion.div
-            className="h-4 w-full origin-left bg-purple-800 fixed z-5"
-            style={{ scaleX: scrollYProgress }}
-          />
+          <div className="h-4 w-full origin-left bg-purple-800 fixed z-5" />
 
           <div className="lg:w-100 w-80   h-12 bg-black/60 backdrop-blur-[1px] border border-purple-800 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center  px-5">
             <button
