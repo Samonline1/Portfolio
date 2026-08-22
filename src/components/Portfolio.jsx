@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Loading from "./Loading";
 
 const About = lazy(() => import("./About"));
+const Experience = lazy(() => import("./Experience"));
 const Projects = lazy(() => import("./Projects"));
 const Contact = lazy(() => import("./Contact"));
 
@@ -12,6 +13,7 @@ const Portfolio = () => {
 
   const home = useRef(null);
   const about = useRef(null);
+  const experience = useRef(null);
   const proj = useRef(null);
   const contact = useRef(null);
 
@@ -60,27 +62,33 @@ const Portfolio = () => {
 
           <div className="h-4 w-full origin-left bg-purple-800 fixed z-5" />
 
-          <div className="lg:w-100 w-80   h-12 bg-black/60 backdrop-blur-[1px] border border-purple-800 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center  px-5">
+          <div className="max-w-fit w-[70vw]   h-12 bg-black/60 backdrop-blur-[1px] border border-purple-800 fixed top-14 left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] z-10 rounded-full shadow-md flex items-center justify-center px-3 sm:px-5 gap-1 sm:gap-2 text-xs sm:text-sm text-gray-200">
             <button
-              className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
+              className="hover:bg-purple-700 active:bg-purple-700 hover:text-white py-1 px-2.5 sm:px-3 rounded-full transition-colors cursor-pointer"
               onClick={() => home.current.scrollIntoView({ behavior: "smooth" })}
             >
               Home
             </button>
             <button
-              className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
+              className="hover:bg-purple-700 active:bg-purple-700 hover:text-white py-1 px-2.5 sm:px-3 rounded-full transition-colors cursor-pointer"
               onClick={() => about.current.scrollIntoView({ behavior: "smooth" })}
             >
               About
             </button>
             <button
-              className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
+              className="hover:bg-purple-700 active:bg-purple-700 hover:text-white py-1 px-2.5 sm:px-3 rounded-full transition-colors cursor-pointer"
+              onClick={() => experience.current.scrollIntoView({ behavior: "smooth" })}
+            >
+              Experience
+            </button>
+            <button
+              className="hover:bg-purple-700 active:bg-purple-700 hover:text-white py-1 px-2.5 sm:px-3 rounded-full transition-colors cursor-pointer"
               onClick={() => proj.current.scrollIntoView({ behavior: "smooth" })}
             >
               Projects
             </button>
             <button
-              className="hover:bg-purple-700 active:bg-purple-700 py-1 px-3 rounded-full"
+              className="hover:bg-purple-700 active:bg-purple-700 hover:text-white py-1 px-2.5 sm:px-3 rounded-full transition-colors cursor-pointer"
               onClick={() => contact.current.scrollIntoView({ behavior: "smooth" })}
             >
               Contact
@@ -89,6 +97,7 @@ const Portfolio = () => {
           <Hero ref={home} />
           <Suspense fallback={null}>
             <About ref={about} />
+            <Experience ref={experience} />
             <Projects ref={proj} />
             <Contact ref={contact} />
           </Suspense>
