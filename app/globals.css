@@ -102,3 +102,16 @@
     background-position: -200% center;
   }
 }
+  
+.custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }  
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }  
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }  
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); } 
+  
+@layer utilities {  
+  .animate-cloud-slow { animation: cloudMove 90s linear infinite; }  
+  .animate-cloud-mid { animation: cloudMove 60s linear infinite; }  
+  .animate-cloud-fast { animation: cloudMove 40s linear infinite; }  
+}  
+@keyframes cloudMove { from { transform: translate3d(-20%, 0, 0); } to { transform: translate3d(100%, 0, 0); } }  
+:root { --sky-color: #167ec9; } 

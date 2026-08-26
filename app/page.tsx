@@ -1,5 +1,10 @@
-import PortfolioPage from "@/components/PortfolioPage";
+import { WindowProvider } from "@/components/os/WindowManager";
+import { DesktopEnvironment } from "@/components/os/DesktopEnvironment";
 
 export default function Home() {
-  return <PortfolioPage />;
+  return (
+    <WindowProvider>
+      <DesktopEnvironment />
+    </WindowProvider>
+  );
 }
