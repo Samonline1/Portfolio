@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useWindowManager, AppId } from "./WindowManager";
-import { FaFolderOpen, FaTerminal, FaCode, FaFilePdf, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FinderIcon, TerminalIcon, SettingsIcon, FolderIcon, MailIcon, PreviewIcon, AppStoreIcon } from "./MacIcons";
+import { FaTh, FaGithub, FaLinkedin } from "react-icons/fa";
 
 interface DockItemProps {
   label: string;
@@ -15,9 +16,7 @@ const DockItem = ({ label, icon, isActive, onClick }: DockItemProps) => (
   <div className="relative group flex flex-col items-center">
     <button
       onClick={onClick}
-      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center text-2xl md:text-3xl transition-all duration-300 transform group-hover:-translate-y-3 group-hover:scale-125 shadow-lg active:scale-95 ${
-        isActive ? "bg-gradient-to-b from-white/40 to-white/10 border border-white/50" : "bg-gradient-to-b from-white/20 to-white/5 border border-white/20 hover:from-white/30 hover:to-white/10"
-      }`}
+      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 transform group-hover:-translate-y-3 group-hover:scale-125 shadow-lg active:scale-95`}
     >
       {icon}
     </button>
@@ -31,7 +30,7 @@ const DockItem = ({ label, icon, isActive, onClick }: DockItemProps) => (
 );
 
 export const Dock = () => {
-  const { windows, openWindow } = useWindowManager();
+  const { windows, openWindow, isLaunchpadOpen, toggleLaunchpad } = useWindowManager();
 
   const isAppActive = (appId: AppId) => windows.some(w => w.appId === appId);
 
@@ -43,27 +42,39 @@ export const Dock = () => {
     <div className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-[9000]">
       <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl shadow-2xl">
         <DockItem
+          label="Launchpad"
+          icon={<div className="w-full h-full rounded-2xl bg-gradient-to-b from-gray-100 to-gray-300 flex items-center justify-center border border-white/40 shadow-inner"><FaTh className="text-gray-500 text-3xl" /></div>}
+          isActive={isLaunchpadOpen}
+          onClick={toggleLaunchpad}
+        />
+        <DockItem
           label="File Manager"
-          icon={<FaFolderOpen className="text-blue-400" />}
+          icon={<FinderIcon />}
           isActive={isAppActive("portfolio")}
           onClick={() => openWindow("portfolio")}
         />
         <DockItem
           label="Terminal"
-          icon={<FaTerminal className="text-gray-300" />}
+          icon={<TerminalIcon />}
           isActive={isAppActive("terminal")}
           onClick={() => openWindow("terminal")}
         />
         <DockItem
           label="Projects"
-          icon={<FaCode className="text-purple-400" />}
+          icon={<FolderIcon />}
           isActive={isAppActive("projects")}
           onClick={() => openWindow("projects")}
         />
         <DockItem
+          label="About"
+          icon={<SettingsIcon />}
+          isActive={isAppActive("about")}
+          onClick={() => openWindow("about")}
+        />
+        <DockItem
           label="Resume"
-          icon={<FaFilePdf className="text-red-400" />}
-          isActive={false} // Resume is a file link
+          icon={<PreviewIcon />}
+          isActive={isAppActive("resume")}
           onClick={() => openWindow("resume")}
         />
         
@@ -83,7 +94,7 @@ export const Dock = () => {
         />
         <DockItem
           label="Contact"
-          icon={<FaEnvelope className="text-green-400" />}
+          icon={<MailIcon />}
           isActive={isAppActive("contact")}
           onClick={() => openWindow("contact")}
         />

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { projects } from "@/lib/data";
-import { FaCode, FaArrowLeft, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaCode, FaArrowLeft, FaGithub, FaExternalLinkAlt, FaFolder } from "react-icons/fa";
 
 export const ProjectsApp = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);

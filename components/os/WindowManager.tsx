@@ -19,6 +19,8 @@ export interface WindowState {
 
 interface WindowContextType {
   windows: WindowState[];
+  isLaunchpadOpen: boolean;
+  toggleLaunchpad: () => void;
   openWindow: (appId: AppId) => void;
   closeWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
@@ -63,6 +65,11 @@ const getTitle = (appId: AppId) => {
 export const WindowProvider = ({ children }: { children: ReactNode }) => {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(10);
+  const [isLaunchpadOpen, setIsLaunchpadOpen] = useState(false);
+
+  const toggleLaunchpad = () => {
+    setIsLaunchpadOpen((prev) => !prev);
+  };
 
   const focusWindow = (id: string) => {
     setHighestZIndex((prev) => prev + 1);
@@ -72,6 +79,8 @@ export const WindowProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const openWindow = (appId: AppId) => {
+    setIsLaunchpadOpen(false);
+
     if (appId === "resume") {
       // Direct action for resume, don't open a window unless you want to render PDF inside.
       // The user said: "Clicking it should use the existing resume behavior/link."
@@ -154,6 +163,8 @@ export const WindowProvider = ({ children }: { children: ReactNode }) => {
     <WindowContext.Provider
       value={{
         windows,
+        isLaunchpadOpen,
+        toggleLaunchpad,
         openWindow,
         closeWindow,
         minimizeWindow,
@@ -163,7 +174,7 @@ export const WindowProvider = ({ children }: { children: ReactNode }) => {
         updateWindowSize,
         closeAll,
         minimizeAll,
-        bringToFront
+        bringToFront,
       }}
     >
       {children}

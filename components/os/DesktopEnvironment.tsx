@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useWindowManager, WindowState } from "./WindowManager";
 import { MenuBar } from "./MenuBar";
 import { Dock } from "./Dock";
-import { DesktopIcon } from "./DesktopIcon";
 import { WindowFrame } from "./WindowFrame";
+import { LaunchpadApp } from "./LaunchpadApp";
 import { PortfolioApp } from "../apps/PortfolioApp";
 import { TerminalApp } from "../apps/TerminalApp";
 import { AboutApp } from "../apps/AboutApp";
@@ -50,48 +50,8 @@ export const DesktopEnvironment = () => {
       {/* Main Desktop Area */}
       <div className="absolute top-7 bottom-0 left-0 right-0 z-10 p-4 flex flex-col md:flex-row pointer-events-none">
         
-        {/* Desktop Icons (Left) */}
+        {/* Desktop Icons removed, Launchpad handles apps now */}
         <div className="flex flex-row flex-wrap md:flex-col gap-4 mt-2 mb-4 md:mb-0 w-full md:w-32 pointer-events-auto items-start">
-          <DesktopIcon
-            appId="portfolio"
-            label="File Manager"
-            icon={<FaFolder className="text-blue-400" />}
-          />
-          <DesktopIcon
-            appId="terminal"
-            label="Terminal"
-            icon={<FaTerminal className="text-gray-300" />}
-          />
-          <DesktopIcon
-            appId="about"
-            label="About"
-            icon={<FaUser className="text-indigo-400" />}
-          />
-          <DesktopIcon
-            appId="experience"
-            label="Experience"
-            icon={<FaBriefcase className="text-emerald-400" />}
-          />
-          <DesktopIcon
-            appId="projects"
-            label="Projects"
-            icon={<FaCode className="text-purple-400" />}
-          />
-          <DesktopIcon
-            appId="skills"
-            label="Skills"
-            icon={<FaStar className="text-pink-400" />}
-          />
-          <DesktopIcon
-            appId="contact"
-            label="Contact"
-            icon={<FaEnvelope className="text-rose-400" />}
-          />
-          <DesktopIcon
-            appId="resume"
-            label="Resume"
-            icon={<FaFilePdf className="text-red-500" />}
-          />
         </div>
 
         <HeroWidget />
@@ -110,6 +70,8 @@ export const DesktopEnvironment = () => {
           })}
         </div>
       </div>
+
+      <LaunchpadApp />
 
       <div className="pointer-events-auto z-[9000] relative">
         <Dock />
