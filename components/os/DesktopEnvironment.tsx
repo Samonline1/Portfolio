@@ -15,6 +15,7 @@ import { ContactApp } from "../apps/ContactApp";
 import { SkillsApp } from "../apps/SkillsApp";
 import { AnimatedCloudBackground } from "./AnimatedCloudBackground";
 import { HeroWidget } from "./HeroWidget";
+import { LockScreen } from "./LockScreen";
 import { FaFolder, FaTerminal, FaUser, FaBriefcase, FaCode, FaEnvelope, FaFilePdf, FaStar } from "react-icons/fa";
 
 const AppRenderer = ({ windowState }: { windowState: WindowState }) => {
@@ -33,6 +34,7 @@ const AppRenderer = ({ windowState }: { windowState: WindowState }) => {
 export const DesktopEnvironment = () => {
   const { windows, openWindow } = useWindowManager();
   const [isMobile, setIsMobile] = useState(false);
+  const [isLocked, setIsLocked] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -42,8 +44,19 @@ export const DesktopEnvironment = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-[#0f0f13] text-white select-none">
+    <div className="fixed inset-0 overflow-hidden text-white select-none">
+      {/* 
+        We rely on globals.css or layout.tsx for the user's custom background image.
+        Wait, I'll keep the AnimatedCloudBackground if they want it, or just let their custom CSS bg shine.
+        The user said "as i ahev added new img as BG", so they might have added it in globals.css. 
+        I'll wrap AnimatedCloudBackground in a container that allows the background behind it to show, 
+        or we can just keep it but ensure it's not totally opaque. 
+        Actually, let's keep AnimatedCloudBackground just in case they meant they updated that component, 
+        or if it's placed behind. 
+      */}
       <AnimatedCloudBackground />
+
+      {isLocked && <LockScreen onUnlock={() => setIsLocked(false)} />}
 
       <MenuBar />
 

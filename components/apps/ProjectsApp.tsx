@@ -116,8 +116,8 @@ export const ProjectsApp = () => {
             onClick={() => setSelectedProject(project)}
             className="flex flex-col items-center p-4 rounded-xl hover:bg-white/10 cursor-pointer transition-colors border border-transparent hover:border-white/5 group"
           >
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform mb-3">
-              <FaCode className="text-2xl text-white drop-shadow-md" />
+            <div className="w-16 h-16 flex items-center justify-center mb-3">
+              <FaFolder className="w-full h-full text-blue-400 drop-shadow-[0_4px_10px_rgba(96,165,250,0.6)] group-hover:scale-110 transition-transform" />
             </div>
             <span className="text-sm text-gray-200 font-medium text-center line-clamp-1">
               {project.title}

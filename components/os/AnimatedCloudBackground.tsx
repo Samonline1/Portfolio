@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import bg from "@/docs/assets/bg.jpeg";
 
 export const AnimatedCloudBackground = () => {
   return (
@@ -8,6 +10,7 @@ export const AnimatedCloudBackground = () => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[linear-gradient(180deg,var(--sky-color,#48a1df)_0%,#72b8e5_45%,#a9d9ef_100%)]"
       aria-hidden="true"
     >
+      <Image className="h-full w-full bg-cover bg-center" src={bg} alt="" />
       {/* FAR CLOUDS */}
       <div
         className="absolute inset-0 opacity-35 blur-[12px]"
@@ -23,7 +26,7 @@ export const AnimatedCloudBackground = () => {
       </div>
 
       {/* MID CLOUDS */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-45 blur-[9px]"
         style={{
           animation: "cloudMove 120s linear infinite",
@@ -34,10 +37,10 @@ export const AnimatedCloudBackground = () => {
         <CloudGroup scale={2.0} x="92%" y="28%" />
         <CloudGroup scale={1.5} x="35%" y="72%" />
         <CloudGroup scale={1.8} x="76%" y="82%" />
-      </div>
+      </div> */}
 
       {/* NEAR CLOUDS */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-50 blur-[6px]"
         style={{
           animation: "cloudMove 90s linear infinite",
@@ -48,7 +51,7 @@ export const AnimatedCloudBackground = () => {
         <CloudGroup scale={1.5} x="82%" y="48%" />
         <CloudGroup scale={2.0} x="25%" y="90%" />
         <CloudGroup scale={1.7} x="68%" y="72%" />
-      </div>
+      </div> */}
     </div>
   );
 };

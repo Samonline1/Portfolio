@@ -43,7 +43,7 @@ export const Dock = () => {
       <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl shadow-2xl">
         <DockItem
           label="Launchpad"
-          icon={<div className="w-full h-full rounded-2xl bg-gradient-to-b from-gray-100 to-gray-300 flex items-center justify-center border border-white/40 shadow-inner"><FaTh className="text-gray-500 text-3xl" /></div>}
+          icon={<FaTh className="w-full h-full text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.6)] transition-all hover:scale-110" />}
           isActive={isLaunchpadOpen}
           onClick={toggleLaunchpad}
         />
@@ -82,13 +82,13 @@ export const Dock = () => {
 
         <DockItem
           label="GitHub"
-          icon={<FaGithub className="text-white" />}
+          icon={<FaGithub className="w-full h-full text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.6)] transition-all hover:scale-110" />}
           isActive={false}
           onClick={() => handleExternalLink("https://github.com/Samonline1")}
         />
         <DockItem
           label="LinkedIn"
-          icon={<FaLinkedin className="text-blue-500" />}
+          icon={<FaLinkedin className="w-full h-full text-blue-500 drop-shadow-[0_4px_10px_rgba(59,130,246,0.6)] transition-all hover:scale-110" />}
           isActive={false}
           onClick={() => handleExternalLink("https://www.linkedin.com/in/sameer-hussain-6829222a6")}
         />

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { Pixelify_Sans, Inter } from "next/font/google";
 import "./globals.css";
+
+const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: ["400"], variable: "--font-pixel" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Sameer Hussain | Portfolio",
@@ -13,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#0B0B0D] text-white">
+      <body className={`antialiased bg-[#0B0B0D] text-white ${pixelFont.variable} ${inter.variable}`}>
         {children}
       </body>
     </html>

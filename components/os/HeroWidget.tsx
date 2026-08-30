@@ -1,49 +1,37 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useWindowManager } from "./WindowManager";
-
-const words = ["Codes", "Designs", "Builds", "Innovates"];
 
 export const HeroWidget = () => {
   const { openWindow } = useWindowManager();
-  const [wordIndex, setWordIndex] = useState(0);
+  const roles = ["Codes", "Builds", "Designs", "Innovates"];
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [roles.length]);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-      <div className="pointer-events-auto flex flex-col items-center justify-center text-center -mt-16">
-        <div className="text-yellow-300 text-xs tracking-[0.2em] uppercase font-bold mb-4 flex items-center gap-2 drop-shadow-md">
-          <span className="w-2 h-2 rounded-full bg-yellow-400"></span> 
-          HELLO, I'M SAM ONLINE
-        </div>
-        
-        <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white drop-shadow-lg mb-8" style={{ fontFamily: "serif" }}>
-          Designer who <br/>
-          <span className="text-white relative inline-block">
-            {words[wordIndex]}
-          </span>
-        </h1>
-
-        <button 
-          onClick={() => openWindow("about")}
-          className="flex items-center gap-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 text-white transition-all shadow-xl active:scale-95"
-        >
-          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-black/40 text-xs">
-            ▶
-          </div>
-          <span className="font-medium text-sm tracking-wide">Read more about me</span>
-          <div className="w-8 h-8 rounded-full bg-black/40 flex items-center justify-center">
-             <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
-          </div>
-        </button>
+    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none -mt-20">
+      <h1 
+        className="text-5xl md:text-7xl lg:text-9xl tracking-widest text-white mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+        style={{ fontFamily: "var(--font-pixel)" }}
+      >
+        sam
+      </h1>
+      <div className="text-xl md:text-2xl text-white/90 font-light mb-8 flex items-center gap-2 drop-shadow-md bg-black/20 backdrop-blur-sm px-6 py-2 rounded-full border border-white/10">
+        <span>Designer who</span>
+        <span className="font-semibold text-white min-w-[100px] inline-block animate-pulse">{roles[roleIndex]}</span>
       </div>
+      <button 
+        className="pointer-events-auto px-8 py-3 bg-white text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all active:scale-95"
+        onClick={() => openWindow("about")}
+      >
+        More About Me
+      </button>
     </div>
   );
 };
