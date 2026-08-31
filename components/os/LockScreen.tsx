@@ -9,35 +9,36 @@ interface LockScreenProps {
 export const LockScreen = ({ onUnlock }: LockScreenProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
+  const handleUnlock = () => {
+    if (!isVisible) return;
+    setIsVisible(false);
+    setTimeout(() => {
+      onUnlock();
+    }, 500); // Wait for fade-out animation
+  };
+
   useEffect(() => {
-    const handleAction = (e: Event) => {
+    const handleKeyOrScroll = (e: Event) => {
       if (e.type === "keydown") {
         const keyEvent = e as KeyboardEvent;
         if (keyEvent.code !== "Space") return;
       }
-      
-      setIsVisible(false);
-      setTimeout(() => {
-        onUnlock();
-      }, 500); // Wait for fade-out animation
+      handleUnlock();
     };
 
-    window.addEventListener("keydown", handleAction);
-    window.addEventListener("wheel", handleAction);
-    window.addEventListener("click", handleAction);
-    window.addEventListener("touchstart", handleAction);
+    window.addEventListener("keydown", handleKeyOrScroll);
+    window.addEventListener("wheel", handleKeyOrScroll);
 
     return () => {
-      window.removeEventListener("keydown", handleAction);
-      window.removeEventListener("wheel", handleAction);
-      window.removeEventListener("click", handleAction);
-      window.removeEventListener("touchstart", handleAction);
+      window.removeEventListener("keydown", handleKeyOrScroll);
+      window.removeEventListener("wheel", handleKeyOrScroll);
     };
-  }, [onUnlock]);
+  }, [isVisible]);
 
   return (
     <div 
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center transition-opacity duration-500 bg-black/20 backdrop-blur-sm ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      onClick={handleUnlock}
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center transition-opacity duration-500 bg-black/20 backdrop-blur-sm cursor-pointer ${isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
     >
       {/* Scanline overlay for that retro feel from the image */}
       <div 
@@ -47,7 +48,7 @@ export const LockScreen = ({ onUnlock }: LockScreenProps) => {
         }}
       />
       
-      <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full relative">
+      <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full relative pointer-events-none">
         <h1 
           className="text-6xl md:text-8xl lg:text-[10rem] text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
           style={{ fontFamily: "var(--font-pixel)" }}
@@ -58,7 +59,7 @@ export const LockScreen = ({ onUnlock }: LockScreenProps) => {
         <div className="absolute bottom-16 animate-pulse flex items-center gap-3">
           <span className="text-sm tracking-widest text-white/90 drop-shadow-md uppercase font-semibold">Press</span>
           <span className="px-3 py-1 bg-white/90 text-black text-xs font-bold rounded">space</span>
-          <span className="text-sm tracking-widest text-white/90 drop-shadow-md uppercase font-semibold">Or Scroll To Continue</span>
+          <span className="text-sm tracking-widest text-white/90 drop-shadow-md uppercase font-semibold">Or Click To Continue</span>
         </div>
       </div>
     </div>

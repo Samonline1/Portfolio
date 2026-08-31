@@ -10,7 +10,8 @@ export const AnimatedCloudBackground = () => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[linear-gradient(180deg,var(--sky-color,#48a1df)_0%,#72b8e5_45%,#a9d9ef_100%)]"
       aria-hidden="true"
     >
-      <Image className="h-full w-full bg-cover bg-center" src={bg} alt="" />
+      <Image className="h-full w-full bg-cover bg-center
+      " src={bg} alt="" />
       {/* FAR CLOUDS */}
       <div
         className="absolute inset-0 opacity-35 blur-[12px]"
@@ -21,8 +22,8 @@ export const AnimatedCloudBackground = () => {
         <CloudGroup scale={1.5} x="8%" y="18%" />
         <CloudGroup scale={2.2} x="72%" y="12%" />
         <CloudGroup scale={1.3} x="42%" y="48%" />
-        <CloudGroup scale={2.0} x="88%" y="68%" />
-        <CloudGroup scale={1.6} x="18%" y="78%" />
+        {/* <CloudGroup scale={2.0} x="88%" y="68%" />
+        <CloudGroup scale={1.6} x="18%" y="78%" /> */}
       </div>
 
       {/* MID CLOUDS */}

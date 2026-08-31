@@ -16,12 +16,12 @@ const DockItem = ({ label, icon, isActive, onClick }: DockItemProps) => (
   <div className="relative group flex flex-col items-center">
     <button
       onClick={onClick}
-      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 transform group-hover:-translate-y-3 group-hover:scale-125 shadow-lg active:scale-95`}
+      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 transform group-hover:-translate-y-3 group-hover:scale-125 shadow-xl bg-black/30 active:scale-95`}
     >
       {icon}
     </button>
     {isActive && (
-      <div className="absolute -bottom-2 w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]" />
+      <div className="absolute -bottom-2 w-1.5 h-1.5 rounded-full " />
     )}
     <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1 bg-black/60 backdrop-blur-md text-white text-xs rounded-md pointer-events-none whitespace-nowrap border border-white/10">
       {label}
@@ -40,10 +40,10 @@ export const Dock = () => {
 
   return (
     <div className="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-[9000]">
-      <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl shadow-2xl">
+      <div className="flex items-center gap-3 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 bg-white/20 backdrop-blur-lg border border-white/40 rounded-3xl shadow-2xl">
         <DockItem
           label="Launchpad"
-          icon={<FaTh className="w-full h-full text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.6)] transition-all hover:scale-110" />}
+          icon={<FaTh className="p-2 w-full h-full text-white transition-all hover:scale-105" />}
           isActive={isLaunchpadOpen}
           onClick={toggleLaunchpad}
         />
@@ -82,13 +82,13 @@ export const Dock = () => {
 
         <DockItem
           label="GitHub"
-          icon={<FaGithub className="w-full h-full text-white drop-shadow-[0_4px_10px_rgba(255,255,255,0.6)] transition-all hover:scale-110" />}
+          icon={<FaGithub className="w-12 h-12 text-white transition-all hover:scale-105" />}
           isActive={false}
           onClick={() => handleExternalLink("https://github.com/Samonline1")}
         />
         <DockItem
           label="LinkedIn"
-          icon={<FaLinkedin className="w-full h-full text-blue-500 drop-shadow-[0_4px_10px_rgba(59,130,246,0.6)] transition-all hover:scale-110" />}
+          icon={<FaLinkedin className="w-12 h-12 text-blue-500  transition-all hover:scale-105" />}
           isActive={false}
           onClick={() => handleExternalLink("https://www.linkedin.com/in/sameer-hussain-6829222a6")}
         />

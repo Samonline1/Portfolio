@@ -14,7 +14,8 @@ import { ProjectsApp } from "../apps/ProjectsApp";
 import { ContactApp } from "../apps/ContactApp";
 import { SkillsApp } from "../apps/SkillsApp";
 import { AnimatedCloudBackground } from "./AnimatedCloudBackground";
-import { HeroWidget } from "./HeroWidget";
+import { ProfileWidget } from "./ProfileWidget";
+import { GithubWidget } from "./GithubWidget";
 import { LockScreen } from "./LockScreen";
 import { FaFolder, FaTerminal, FaUser, FaBriefcase, FaCode, FaEnvelope, FaFilePdf, FaStar } from "react-icons/fa";
 
@@ -45,15 +46,6 @@ export const DesktopEnvironment = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden text-white select-none">
-      {/* 
-        We rely on globals.css or layout.tsx for the user's custom background image.
-        Wait, I'll keep the AnimatedCloudBackground if they want it, or just let their custom CSS bg shine.
-        The user said "as i ahev added new img as BG", so they might have added it in globals.css. 
-        I'll wrap AnimatedCloudBackground in a container that allows the background behind it to show, 
-        or we can just keep it but ensure it's not totally opaque. 
-        Actually, let's keep AnimatedCloudBackground just in case they meant they updated that component, 
-        or if it's placed behind. 
-      */}
       <AnimatedCloudBackground />
 
       {isLocked && <LockScreen onUnlock={() => setIsLocked(false)} />}
@@ -64,10 +56,18 @@ export const DesktopEnvironment = () => {
       <div className="absolute top-7 bottom-0 left-0 right-0 z-10 p-4 flex flex-col md:flex-row pointer-events-none">
         
         {/* Desktop Icons removed, Launchpad handles apps now */}
-        <div className="flex flex-row flex-wrap md:flex-col gap-4 mt-2 mb-4 md:mb-0 w-full md:w-32 pointer-events-auto items-start">
+        <div className="flex flex-col flex-wrap md:flex-col gap-4 mt-2 mb-4 md:mb-0 w-full md:w-32 pointer-events-auto items-start">
         </div>
 
-        <HeroWidget />
+        {/* Desktop Widgets */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 pointer-events-none z-0 mt-8 px-4 w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar pb-24">
+          <div className="pointer-events-auto w-full flex justify-center mt-12 transition-transform">
+            <ProfileWidget />
+          </div>
+          <div className="pointer-events-auto w-full flex justify-center transition-transform">
+            <GithubWidget />
+          </div>
+        </div>
 
         {/* Window Manager Layer */}
         <div className="absolute inset-0 pointer-events-none">
