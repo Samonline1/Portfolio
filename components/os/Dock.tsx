@@ -74,8 +74,8 @@ export const Dock = () => {
         <DockItem
           label="Resume"
           icon={<PreviewIcon />}
-          isActive={isAppActive("resume")}
-          onClick={() => openWindow("resume")}
+          isActive={false}
+          onClick={() => handleExternalLink("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing")}
         />
         
         <div className="w-px h-8 bg-white/10 mx-1" />

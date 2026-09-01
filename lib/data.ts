@@ -9,12 +9,31 @@ import { ProjectItem, ExperienceItem } from "@/types";
 
 export const projects: (Omit<ProjectItem, "image"> & { image?: StaticImageData })[] = [
   {
+    title: "News Pulse",
+    subtitle: "AI News Intelligence Platform",
+    stack: ["Next.js", "React", "Express", "MongoDB", "GitHub Actions"],
+    github: "https://github.com/Samonline1/news-pulse",
+    live: "https://news-pulsei.vercel.app/", 
+    overview: "A sophisticated AI-driven news intelligence platform designed to aggregate and seamlessly present news across various domains.",
+    features: [
+      "Built and deployed a full-stack news platform using Next.js and React, aggregating news from multiple RSS sources.",
+      "Developed responsive components, API integrations, loading states, sorting/filtering, and interactive news features.",
+      "Built Express REST APIs with database caching and configured GitHub Actions CI/CD for automated data updates."
+    ]
+  },
+  {
     title: "Cartify",
-    subtitle: "Full Stack E-Commerce Platform",
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    subtitle: "MERN E-Commerce Platform",
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
     github: "https://github.com/Samonline1/Cartify",
     live: "https://caartify.netlify.app/",
     image: Cartify,
+    overview: "A fully-featured MERN stack e-commerce application equipped with secure authentication and complete shopping workflows.",
+    features: [
+      "Built and deployed an e-commerce application with authentication, product browsing, cart, checkout, and admin features.",
+      "Implemented REST APIs, JWT authentication with httpOnly cookies, protected routes, and role-based authorization.",
+      "Built persistent cart and checkout workflows with MongoDB and optimized frontend loading states."
+    ]
   },
   {
     title: "CineScoop",
@@ -57,6 +76,31 @@ export const projects: (Omit<ProjectItem, "image"> & { image?: StaticImageData }
 ];
 
 export const experiences: ExperienceItem[] = [
+  {
+  role: "Software Development Intern",
+  company: "Jholabazar",
+  period: "Aug 2026 - Present",
+  location: "Remote",
+  type: "Internship",
+  description:
+    "Contributing to production-level web applications by developing features, improving user experience, debugging issues, and working with the development team on task-based product improvements.",
+  responsibilities: [
+    "Revamped the website hero section with an improved desktop layout, visual hierarchy, and user experience.",
+    
+    "Identified and fixed an OTP login flow issue where users received OTPs through WhatsApp without clear UI feedback, adding an explicit WhatsApp notification to improve the authentication experience.",
+    
+    "Contribute to feature development, bug fixing, UI improvements, and production-ready implementation across the application."
+  ],
+  skills: [
+    "Next.js",
+    "React.js",
+    "JavaScript",
+    "Tailwind CSS",
+    "REST APIs",
+    "Git",
+    "GitHub"
+  ],
+},
   {
     role: "Full Stack Developer",
     company: "Freelance / Self-Employed",

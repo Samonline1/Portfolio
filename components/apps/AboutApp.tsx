@@ -1,121 +1,99 @@
 "use client";
-import React, { useState } from "react";
-import { FaUser, FaGraduationCap, FaCode } from "react-icons/fa";
+import React from "react";
+import { FaGraduationCap, FaLaptopCode, FaServer, FaCodeBranch, FaCogs, FaGamepad, FaHeadphones, FaCode } from "react-icons/fa";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 
 export const AboutApp = () => {
-  const [activeTab, setActiveTab] = useState("profile");
-
   return (
-    <div className="h-full w-full bg-[#1e1e1e] text-white flex select-none">
-      {/* Sidebar */}
-      <div className="w-48 bg-[#2c2c2d] border-r border-black/20 flex flex-col">
-        <div className="p-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
-          Settings
-        </div>
-        <div className="px-2 flex flex-col gap-1">
-          <button
-            onClick={() => setActiveTab("profile")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-              activeTab === "profile" ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-white/10"
-            }`}
-          >
-            <div className={`p-1 rounded ${activeTab === "profile" ? "bg-white/20" : "bg-gray-500/20"}`}>
-              <FaUser size={12} />
-            </div>
-            Profile
-          </button>
-          <button
-            onClick={() => setActiveTab("education")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-              activeTab === "education" ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-white/10"
-            }`}
-          >
-            <div className={`p-1 rounded ${activeTab === "education" ? "bg-white/20" : "bg-gray-500/20"}`}>
-              <FaGraduationCap size={12} />
-            </div>
-            Education
-          </button>
-          <button
-            onClick={() => setActiveTab("hobbies")}
-            className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-              activeTab === "hobbies" ? "bg-blue-500 text-white" : "text-gray-300 hover:bg-white/10"
-            }`}
-          >
-            <div className={`p-1 rounded ${activeTab === "hobbies" ? "bg-white/20" : "bg-gray-500/20"}`}>
-              <FaCode size={12} />
-            </div>
-            Hobbies
-          </button>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex-1 bg-[#1e1e1e] overflow-y-auto p-8 custom-scrollbar">
-        {activeTab === "profile" && (
-          <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <div className="flex items-center gap-6 mb-8">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-4xl shadow-lg border-2 border-white/10">
-                👨‍💻
+    <div className="h-full w-full bg-transparent text-white overflow-y-auto custom-scrollbar p-4 md:p-8">
+      <div className="max-w-4xl mx-auto space-y-6">
+        
+        {/* Top Header / Summary Card */}
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl flex flex-wrap items-center justify-center sm:justify-start gap-8">
+          <div className="w-32 h-32 shrink-0 rounded-full overflow-hidden border-2 border-white/20 shadow-xl bg-black">
+            <img 
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" 
+              alt="Samonline1"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex-1 text-center sm:text-left min-w-[280px]">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">Samonline1</h1>
+            <h2 className="text-blue-400 font-medium text-lg mb-4">Computer Science Undergraduate & Full Stack Developer</h2>
+            <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+              Computer Science undergraduate (Expected 2027) with hands-on experience building and deploying web applications using 
+              React, Next.js, JavaScript, TypeScript, Node.js, and REST APIs. Highly experienced in API integration, 
+              state management, authentication, debugging, performance improvements, and production deployments.
+            </p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 mt-6">
+              <div className="flex items-center gap-2 text-sm text-gray-400 bg-black/40 px-3 py-1.5 rounded-full border border-white/5">
+                <MdLocationOn className="text-blue-400" /> Remote
               </div>
+              <div className="flex items-center gap-2 text-sm text-gray-400 bg-black/40 px-3 py-1.5 rounded-full border border-white/5">
+                <FaCodeBranch className="text-blue-400" /> Open to Opportunities
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bento Grid layout for secondary info */}
+        <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+          
+          {/* Education Card */}
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <div className="p-2 bg-blue-500/20 text-blue-400 rounded-lg">
+                <FaGraduationCap size={20} />
+              </div>
+              Education
+            </h3>
+            <div className="flex-1 flex flex-col justify-center space-y-4">
               <div>
-                <h1 className="text-3xl font-bold">Sam Online</h1>
-                <p className="text-gray-400 text-lg">Full Stack Developer</p>
+                <h4 className="text-lg font-semibold text-white">B.Tech, Computer Science Engineering</h4>
+                <p className="text-sm text-blue-400 mt-1">Expected Graduation: 2027</p>
               </div>
-            </div>
-            <div className="bg-[#2c2c2d] rounded-xl border border-white/10 overflow-hidden">
-              <div className="p-4 border-b border-white/10 flex justify-between">
-                <span className="text-gray-400">Name</span>
-                <span className="font-medium">Sam Online</span>
-              </div>
-              <div className="p-4 border-b border-white/10 flex justify-between">
-                <span className="text-gray-400">Location</span>
-                <span className="font-medium">Remote</span>
-              </div>
-              <div className="p-4 border-b border-white/10 flex justify-between">
-                <span className="text-gray-400">Bio</span>
-                <span className="font-medium text-right max-w-sm">
-                  Passionate developer specializing in React, Next.js, and scalable backends.
-                </span>
+              <div className="h-px w-full bg-white/10 my-2"></div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-400">Current CGPA</span>
+                <span className="font-bold text-lg bg-white/10 px-3 py-1 rounded-lg">8.2 / 10</span>
               </div>
             </div>
           </div>
-        )}
 
-        {activeTab === "education" && (
-          <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <h2 className="text-2xl font-bold mb-6">Education & Certifications</h2>
-            <div className="bg-[#2c2c2d] rounded-xl border border-white/10 overflow-hidden">
-              <div className="p-4 border-b border-white/10">
-                <h3 className="font-bold text-lg">B.Tech in Computer Science</h3>
-                <p className="text-sm text-gray-400 mt-1">University of Technology • 2020 - 2024</p>
+          {/* Interests / Focus Areas */}
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <div className="p-2 bg-purple-500/20 text-purple-400 rounded-lg">
+                <FaCogs size={20} />
               </div>
-              <div className="p-4">
-                <h3 className="font-bold text-lg">Full Stack Web Development Bootcamp</h3>
-                <p className="text-sm text-gray-400 mt-1">Online Certification • 2023</p>
+              Core Focus
+            </h3>
+            <div className="flex-1 flex flex-col justify-center space-y-4">
+              <div className="flex items-center gap-4 bg-black/30 p-3 rounded-xl border border-white/5">
+                <FaLaptopCode className="text-blue-400 text-xl" />
+                <div>
+                  <h4 className="font-medium text-gray-200">Frontend Architecture</h4>
+                  <p className="text-xs text-gray-400">Next.js, React, Responsive UI</p>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "hobbies" && (
-          <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <h2 className="text-2xl font-bold mb-6">Interests</h2>
-            <div className="bg-[#2c2c2d] rounded-xl border border-white/10 overflow-hidden">
-              <div className="p-4 border-b border-white/10 flex items-center gap-4">
-                <span className="text-2xl">🎮</span>
-                <span className="font-medium">Game Development</span>
+              <div className="flex items-center gap-4 bg-black/30 p-3 rounded-xl border border-white/5">
+                <FaServer className="text-green-400 text-xl" />
+                <div>
+                  <h4 className="font-medium text-gray-200">Backend Systems</h4>
+                  <p className="text-xs text-gray-400">Node.js, Express, MongoDB</p>
+                </div>
               </div>
-              <div className="p-4 border-b border-white/10 flex items-center gap-4">
-                <span className="text-2xl">📚</span>
-                <span className="font-medium">Open Source Contributions</span>
-              </div>
-              <div className="p-4 flex items-center gap-4">
-                <span className="text-2xl">🎵</span>
-                <span className="font-medium">Music & Audio Production</span>
+              <div className="flex items-center gap-4 bg-black/30 p-3 rounded-xl border border-white/5">
+                <FaCode className="text-pink-400 text-xl" />
+                <div>
+                  <h4 className="font-medium text-gray-200">API Integration</h4>
+                  <p className="text-xs text-gray-400">REST APIs, Auth, State Management</p>
+                </div>
               </div>
             </div>
           </div>
-        )}
+          
+        </div>
       </div>
     </div>
   );

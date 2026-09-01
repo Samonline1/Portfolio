@@ -1,68 +1,89 @@
 "use client";
 import React from "react";
+import { FaLaptopCode, FaServer, FaCode, FaWrench, FaTools, FaLayerGroup } from "react-icons/fa";
 
 export const SkillsApp = () => {
   const skillCategories = [
     {
+      title: "Languages",
+      icon: <FaCode size={24} />,
+      color: "text-yellow-400",
+      bg: "bg-yellow-500/20",
+      skills: ["JavaScript (ES6+)", "TypeScript", "Python", "HTML5", "CSS3"]
+    },
+    {
       title: "Frontend",
-      icon: "🎨",
-      skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "GSAP"]
+      icon: <FaLaptopCode size={24} />,
+      color: "text-blue-400",
+      bg: "bg-blue-500/20",
+      skills: ["React.js", "Next.js", "React Query", "Redux Toolkit", "React Router", "Tailwind CSS", "Responsive UI"]
     },
     {
-      title: "Backend",
-      icon: "⚙️",
-      skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "REST APIs"]
+      title: "Backend & Database",
+      icon: <FaServer size={24} />,
+      color: "text-green-400",
+      bg: "bg-green-500/20",
+      skills: ["Node.js", "Express.js", "REST APIs", "JWT", "MongoDB", "Mongoose"]
     },
     {
-      title: "Tools & DevOps",
-      icon: "🛠",
-      skills: ["Git", "GitHub", "Vercel", "Docker", "Figma"]
+      title: "Development & Architecture",
+      icon: <FaLayerGroup size={24} />,
+      color: "text-purple-400",
+      bg: "bg-purple-500/20",
+      skills: ["API Integration", "State Management", "Authentication", "Debugging", "Performance Optimization"]
+    },
+    {
+      title: "Tools & Deployments",
+      icon: <FaWrench size={24} />,
+      color: "text-pink-400",
+      bg: "bg-pink-500/20",
+      skills: ["Git", "GitHub", "GitHub Actions", "CI/CD", "Postman", "Vercel", "Render", "Netlify"]
     }
   ];
 
   return (
-    <div className="h-full w-full bg-[#1e1e1e] text-white flex flex-col">
-      {/* Mac App Toolbar */}
-      <div className="h-14 border-b border-black/20 bg-[#2c2c2d] flex items-center px-4 justify-center relative">
-        <h1 className="font-bold text-sm tracking-wide">Developer Skills</h1>
-      </div>
+    <div className="h-full w-full bg-transparent text-white overflow-y-auto custom-scrollbar p-4 md:p-8">
+      <div className="max-w-5xl mx-auto space-y-6">
+        
+        {/* Header */}
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center mb-4 border border-blue-500/30">
+            <FaTools size={32} />
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight mb-2">Technical Arsenal</h1>
+          <p className="text-gray-400 max-w-xl mx-auto">
+            A comprehensive overview of the technologies, languages, and tools I use to build robust, scalable, and responsive web applications.
+          </p>
+        </div>
 
-      <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((category, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#2c2c2d] border border-white/10 rounded-2xl p-6 shadow-lg hover:border-white/20 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-2xl mb-4">
+        {/* Skills Grid */}
+        <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+          {skillCategories.map((category, idx) => (
+            <div 
+              key={idx} 
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl flex flex-col hover:bg-white/10 transition-colors duration-300"
+            >
+              <h2 className="text-xl font-bold mb-6 flex items-center gap-4">
+                <div className={`p-3 rounded-xl ${category.bg} ${category.color} border border-white/5 shadow-inner`}>
                   {category.icon}
                 </div>
-                <h2 className="text-xl font-bold mb-4">{category.title}</h2>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span 
-                      key={skill}
-                      className="px-3 py-1.5 bg-black/30 rounded-lg text-sm text-gray-300 font-medium border border-white/5"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                {category.title}
+              </h2>
+              
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {category.skills.map((skill) => (
+                  <span 
+                    key={skill}
+                    className="px-3 py-1.5 bg-black/40 rounded-full text-sm text-gray-200 font-medium border border-white/10 hover:border-white/30 hover:bg-white/10 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between border border-white/10 shadow-xl">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">Always Learning</h2>
-              <p className="text-blue-100 max-w-md">Currently exploring Web3 technologies, Rust, and advanced generative AI integrations to build the next generation of web applications.</p>
             </div>
-            <div className="mt-6 md:mt-0 px-6 py-3 bg-white text-blue-900 font-bold rounded-full cursor-pointer hover:scale-105 transition-transform">
-              View GitHub
-            </div>
-          </div>
+          ))}
         </div>
+
       </div>
     </div>
   );

@@ -5,8 +5,8 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 export const ContactApp = () => {
   return (
-    <div className="h-full w-full bg-[#1e1e2e]/95 text-white flex flex-col items-center justify-center p-8 text-center">
-      <div className="max-w-md w-full space-y-8 bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md shadow-2xl">
+    <div className="h-full w-full bg-transparent text-white flex flex-col items-center justify-center p-8 text-center overflow-hidden">
+      <div className="max-w-md w-full space-y-8 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-2xl">
         <div>
           <div className="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/30">
             <FaEnvelope className="text-2xl" />

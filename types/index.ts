@@ -7,6 +7,8 @@ export interface ProjectItem {
   github?: string;
   live?: string;
   image?: string;
+  features?: string[];
+  overview?: string;
 }
 
 export interface ExperienceItem {

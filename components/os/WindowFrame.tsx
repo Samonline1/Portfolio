@@ -47,7 +47,7 @@ export const WindowFrame = ({ windowState, children }: { windowState: WindowStat
           : ""
       }`}
       style={{
-        zIndex,
+        zIndex: isMaximized ? 9999 + zIndex : zIndex,
         width: isMaximized ? "100%" : width,
         height: isMaximized ? "100%" : height,
         transform: isMaximized ? "none" : `translate3d(${x}px, ${y}px, 0)`,

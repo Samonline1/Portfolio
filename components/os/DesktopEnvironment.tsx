@@ -13,9 +13,11 @@ import { ExperienceApp } from "../apps/ExperienceApp";
 import { ProjectsApp } from "../apps/ProjectsApp";
 import { ContactApp } from "../apps/ContactApp";
 import { SkillsApp } from "../apps/SkillsApp";
+import { ResumeApp } from "../apps/ResumeApp";
 import { AnimatedCloudBackground } from "./AnimatedCloudBackground";
 import { ProfileWidget } from "./ProfileWidget";
 import { GithubWidget } from "./GithubWidget";
+import { ExperienceWidget } from "./ExperienceWidget";
 import { LockScreen } from "./LockScreen";
 import { FaFolder, FaTerminal, FaUser, FaBriefcase, FaCode, FaEnvelope, FaFilePdf, FaStar } from "react-icons/fa";
 
@@ -28,6 +30,7 @@ const AppRenderer = ({ windowState }: { windowState: WindowState }) => {
     case "projects": return <ProjectsApp />;
     case "contact": return <ContactApp />;
     case "skills": return <SkillsApp />;
+    case "resume": return <ResumeApp />;
     default: return <div className="p-4 text-white">App not found</div>;
   }
 };
@@ -60,13 +63,23 @@ export const DesktopEnvironment = () => {
         </div>
 
         {/* Desktop Widgets */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 pointer-events-none z-0 mt-8 px-4 w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar pb-24">
-          <div className="pointer-events-auto w-full flex justify-center mt-12 transition-transform">
-            <ProfileWidget />
+        <div className="absolute top-7 bottom-32 left-0 right-0 flex flex-col items-center justify-center pointer-events-none z-0 px-4 overflow-hidden">
+          
+          <div className="pointer-events-auto flex flex-col gap-8 w-full max-w-[624px] transition-transform items-center justify-center h-full">
+            
+            {/* Top Row: Profile & Experience */}
+            <div className="flex flex-row gap-1 justify-center w-full flex-[3] min-h-0">
+              <ProfileWidget />
+              <ExperienceWidget />
+            </div>
+
+            {/* Bottom Row: GitHub Widget */}
+            <div className="w-full flex justify-center flex-[2] min-h-0">
+              <GithubWidget />
+            </div>
+
           </div>
-          <div className="pointer-events-auto w-full flex justify-center transition-transform">
-            <GithubWidget />
-          </div>
+          
         </div>
 
         {/* Window Manager Layer */}
