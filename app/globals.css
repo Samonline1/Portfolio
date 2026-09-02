@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0B0B0D;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.text-scroll {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.text-track {
+  display: flex;
+  width: max-content;
+  animation: textScroll 3s linear infinite;
+  will-change: transform;
+}
+
+.text-trackreverse {
+  display: flex;
+  width: max-content;
+  animation: textScroll 2s linear infinite;
+  will-change: transform;
+  animation-direction: reverse;
+}
+
+.text-item {
+  padding: 0 1rem;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes textScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.text-outline-purple {
+  color: black;
+  text-shadow:
+    2px 0 #6b21a8,
+    -2px 0 #6b21a8,
+    0 2px #6b21a8,
+    0 -2px #6b21a8,
+    1px 1px #6b21a8,
+    -1px -1px #6b21a8,
+    1px -1px #6b21a8,
+    -1px 1px #6b21a8;
+}
+
+.shine-text {
+  position: relative;
+  display: inline-block;
+
+  color: transparent;
+  text-shadow: #6b21a8;
+  background-image: linear-gradient(
+    120deg,
+    #6b21a8 40%,
+    #9d56df 50%,
+    #6b21a8 60%
+  );
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: shine 5s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+  
+.custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }  
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }  
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }  
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); } 
+  
+@layer utilities {  
+  .animate-cloud-slow { animation: cloudMove 90s linear infinite; }  
+  .animate-cloud-mid { animation: cloudMove 60s linear infinite; }  
+  .animate-cloud-fast { animation: cloudMove 40s linear infinite; }  
+}  
+@keyframes cloudMove { from { transform: translate3d(-20%, 0, 0); } to { transform: translate3d(100%, 0, 0); } }  
+:root { --sky-color: #167ec9; } 
