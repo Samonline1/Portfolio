@@ -59,39 +59,49 @@ export const Dock = () => {
           isActive={isAppActive("terminal")}
           onClick={() => openWindow("terminal")}
         />
-        <DockItem
-          label="Projects"
-          icon={<FolderIcon />}
-          isActive={isAppActive("projects")}
-          onClick={() => openWindow("projects")}
-        />
-        <DockItem
-          label="About"
-          icon={<SettingsIcon />}
-          isActive={isAppActive("about")}
-          onClick={() => openWindow("about")}
-        />
-        <DockItem
-          label="Resume"
-          icon={<PreviewIcon />}
-          isActive={false}
-          onClick={() => handleExternalLink("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing")}
-        />
+        <div className="hidden sm:block">
+          <DockItem
+            label="Projects"
+            icon={<FolderIcon />}
+            isActive={isAppActive("projects")}
+            onClick={() => openWindow("projects")}
+          />
+        </div>
+        <div className="hidden md:block">
+          <DockItem
+            label="About"
+            icon={<SettingsIcon />}
+            isActive={isAppActive("about")}
+            onClick={() => openWindow("about")}
+          />
+        </div>
+        <div className="hidden sm:block">
+          <DockItem
+            label="Resume"
+            icon={<PreviewIcon />}
+            isActive={false}
+            onClick={() => handleExternalLink("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing")}
+          />
+        </div>
         
-        <div className="w-px h-8 bg-white/10 mx-1" />
+        <div className="w-px h-8 bg-white/10 mx-1 hidden sm:block" />
 
-        <DockItem
-          label="GitHub"
-          icon={<FaGithub className="w-12 h-12 text-white transition-all hover:scale-105" />}
-          isActive={false}
-          onClick={() => handleExternalLink("https://github.com/Samonline1")}
-        />
-        <DockItem
-          label="LinkedIn"
-          icon={<FaLinkedin className="w-12 h-12 text-blue-500  transition-all hover:scale-105" />}
-          isActive={false}
-          onClick={() => handleExternalLink("https://www.linkedin.com/in/sameer-hussain-6829222a6")}
-        />
+        <div className="hidden sm:block">
+          <DockItem
+            label="GitHub"
+            icon={<FaGithub className="w-12 h-12 text-white transition-all hover:scale-105" />}
+            isActive={false}
+            onClick={() => handleExternalLink("https://github.com/Samonline1")}
+          />
+        </div>
+        <div className="hidden sm:block">
+          <DockItem
+            label="LinkedIn"
+            icon={<FaLinkedin className="w-12 h-12 text-blue-500  transition-all hover:scale-105" />}
+            isActive={false}
+            onClick={() => handleExternalLink("https://www.linkedin.com/in/sameer-hussain-6829222a6")}
+          />
+        </div>
         <DockItem
           label="Contact"
           icon={<MailIcon />}

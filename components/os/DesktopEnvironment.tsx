@@ -63,18 +63,18 @@ export const DesktopEnvironment = () => {
         </div>
 
         {/* Desktop Widgets */}
-        <div className="absolute top-7 bottom-32 left-0 right-0 flex flex-col items-center justify-center pointer-events-none z-0 px-4 overflow-hidden">
+        <div className="absolute top-7 bottom-24 sm:bottom-32 left-0 right-0 flex flex-col items-center sm:justify-center pointer-events-none z-0 px-4 overflow-y-auto sm:overflow-hidden custom-scrollbar">
           
-          <div className="pointer-events-auto flex flex-col gap-8 w-full max-w-[624px] transition-transform items-center justify-center h-full">
+          <div className="pointer-events-auto flex flex-col gap-4 sm:gap-8 w-full max-w-[624px] transition-transform items-center sm:justify-center h-auto sm:h-full py-4 sm:py-0">
             
             {/* Top Row: Profile & Experience */}
-            <div className="flex flex-row gap-1 justify-center w-full flex-[3] min-h-0">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-1 justify-center w-full sm:flex-[3] min-h-0">
               <ProfileWidget />
               <ExperienceWidget />
             </div>
 
             {/* Bottom Row: GitHub Widget */}
-            <div className="w-full flex justify-center flex-[2] min-h-0">
+            <div className="w-full flex justify-center sm:flex-[2] min-h-0">
               <GithubWidget />
             </div>
 

@@ -91,15 +91,21 @@ export const TerminalApp = () => {
       case "experience":
       case "projects":
       case "contact":
-      case "resume":
       case "skills":
         // Direct open aliases
         openWindow(cmd as AppId);
         output.push({ type: "output", text: `Opening ${cmd}...` });
         break;
+      case "resume":
+        window.open("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing", "_blank");
+        output.push({ type: "output", text: "Opening resume in a new tab..." });
+        break;
       case "open":
         const appToOpen = args[1]?.toLowerCase();
-        if (["about", "experience", "projects", "contact", "resume", "skills", "portfolio", "terminal"].includes(appToOpen)) {
+        if (appToOpen === "resume") {
+          window.open("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing", "_blank");
+          output.push({ type: "output", text: "Opening resume in a new tab..." });
+        } else if (["about", "experience", "projects", "contact", "skills", "portfolio", "terminal"].includes(appToOpen)) {
           openWindow(appToOpen as AppId);
           output.push({ type: "output", text: `Opening ${appToOpen}...` });
         } else {

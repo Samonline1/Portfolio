@@ -47,7 +47,14 @@ export const LaunchpadApp = () => {
           {filteredApps.map((app) => (
             <div 
               key={app.id} 
-              onClick={() => openWindow(app.id as any)} 
+              onClick={() => {
+                if (app.id === "resume") {
+                  window.open("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing", "_blank");
+                  toggleLaunchpad();
+                } else {
+                  openWindow(app.id as any);
+                }
+              }} 
               className="flex flex-col items-center gap-2 cursor-pointer group"
             >
               <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-active:scale-95">

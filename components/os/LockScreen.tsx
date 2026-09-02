@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import profile from "@/public/assets/Photo.jpg";
 
 interface LockScreenProps {
   onUnlock: () => void;
@@ -8,20 +10,26 @@ interface LockScreenProps {
 
 export const LockScreen = ({ onUnlock }: LockScreenProps) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [currentTime, setCurrentTime] = useState<Date>(new Date()); // Initialize instantly
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleUnlock = () => {
     if (!isVisible) return;
     setIsVisible(false);
     setTimeout(() => {
       onUnlock();
-    }, 500); // Wait for fade-out animation
+    }, 500);
   };
 
   useEffect(() => {
     const handleKeyOrScroll = (e: Event) => {
       if (e.type === "keydown") {
         const keyEvent = e as KeyboardEvent;
-        if (keyEvent.code !== "Space") return;
+        if (keyEvent.code !== "Space" && keyEvent.code !== "Enter") return;
       }
       handleUnlock();
     };
@@ -38,30 +46,40 @@ export const LockScreen = ({ onUnlock }: LockScreenProps) => {
   return (
     <div 
       onClick={handleUnlock}
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center transition-opacity duration-500 bg-black/20 backdrop-blur-sm cursor-pointer ${isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-between transition-opacity duration-500 bg-black/40 backdrop-blur-xl cursor-pointer select-none ${isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
     >
-      {/* Scanline overlay for that retro feel from the image */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          background: "repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 4px)"
-        }}
-      />
-      
-      <div className="z-10 text-center flex flex-col items-center justify-center h-full w-full relative pointer-events-none">
-        <h1 
-          className="text-6xl md:text-8xl lg:text-[10rem] text-white tracking-widest drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-          style={{ fontFamily: "var(--font-pixel)" }}
-        >
-          sam
+      {/* Top Clock Section */}
+      <div className="mt-12 sm:mt-24 flex flex-col items-center pointer-events-none animate-in slide-in-from-top-10 duration-700">
+        <h1 suppressHydrationWarning className="text-7xl sm:text-[6rem] md:text-[7rem] font-semibold sm:font-medium text-white tracking-tighter sm:tracking-tight drop-shadow-lg flex items-baseline gap-2">
+          <span suppressHydrationWarning>{currentTime.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true }).split(' ')[0]}</span>
+          <span suppressHydrationWarning className="text-3xl sm:text-5xl md:text-6xl font-light opacity-80 uppercase tracking-widest">
+            {currentTime.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true }).split(' ')[1] || ''}
+          </span>
         </h1>
-        
-        <div className="absolute bottom-16 animate-pulse flex items-center gap-3">
-          <span className="text-sm tracking-widest text-white/90 drop-shadow-md uppercase font-semibold">Press</span>
-          <span className="px-3 py-1 bg-white/90 text-black text-xs font-bold rounded">space</span>
-          <span className="text-sm tracking-widest text-white/90 drop-shadow-md uppercase font-semibold">Or Click To Continue</span>
+        <p suppressHydrationWarning className="text-base sm:text-xl md:text-2xl font-medium text-white/90 tracking-wide mt-1 sm:mt-2 drop-shadow-md">
+          {currentTime.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' })}
+        </p>
+      </div>
+      
+      {/* User Profile Section */}
+      <div className="flex flex-col items-center mb-auto mt-20 pointer-events-none animate-in fade-in zoom-in duration-700 delay-150">
+        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl mb-4 bg-black">
+          <Image 
+            src={profile} 
+            alt="User"
+            className="w-full h-full object-cover grayscale opacity-90"
+          />
+        </div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-wide drop-shadow-md">
+          Sameer Hussain
+        </h2>
+        <div className="mt-4 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs sm:text-sm font-medium border border-white/10 animate-pulse">
+          Click or Press Space to unlock
         </div>
       </div>
+      
+      {/* Bottom spacer */}
+      <div className="h-24"></div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import bg from "@/docs/assets/bg.jpeg";
+import bg from "@/public/assets/bg.jpeg";
 
 export const AnimatedCloudBackground = () => {
   return (

@@ -4,7 +4,7 @@ import { experiences } from "@/lib/data";
 
 export const ExperienceWidget = () => {
   return (
-    <div className="flex-1 w-full max-w-[300px] min-h-[300px] mx-auto bg-black/40 backdrop-blur-xl p-5 rounded-3xl shadow-2xl pointer-events-auto transition-transform hover:scale-[1.02] border border-white/20 text-white flex flex-col relative overflow-hidden flex-shrink-0">
+    <div className="flex-none sm:flex-1 w-full sm:max-w-[300px] min-h-[250px] sm:min-h-[300px] mx-auto bg-black/40 backdrop-blur-xl p-5 rounded-3xl shadow-2xl pointer-events-auto transition-transform hover:scale-[1.02] border border-white/20 text-white flex flex-col relative overflow-hidden flex-shrink-0">
       
       {/* Soft gradient blob in the background for that premium OS feel */}
       <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-600/30 blur-[50px] rounded-full pointer-events-none"></div>

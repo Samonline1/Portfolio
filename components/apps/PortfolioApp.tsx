@@ -10,6 +10,10 @@ interface FolderItemProps {
   onClick: () => void;
 }
 
+  const handleExternalLink = (url: string) => {
+    window.open(url, "_blank");
+  };
+
 const FolderItem = ({ label, icon, onClick }: FolderItemProps) => (
   <div
     onClick={onClick}
@@ -78,9 +82,9 @@ export const PortfolioApp = () => {
             onClick={() => openWindow("skills")}
           />
           <FolderItem
-            label="Resume"
+             label="Resume"
             icon={<PreviewIcon />}
-            onClick={() => openWindow("resume")}
+            onClick={() => handleExternalLink("https://drive.google.com/file/d/1fNSY0y7Swzt8BaTYrBM381HW3yCZHb6m/view?usp=sharing")}
           />
         </div>
       </div>
