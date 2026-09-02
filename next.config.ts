@@ -4,7 +4,7 @@ import path from "path";
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
   output: "export",
-  distDir: "docs",
+  basePath: "/Portfolio",
   images: {
     unoptimized: true,
   },
