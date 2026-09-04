@@ -25,7 +25,7 @@ const Contact = forwardRef<HTMLDivElement, {}>((props, contact) => {
           <FaLinkedin className="text-lg sm:text-xl" />
         </a>
         <a
-          href="mailto:sameerhussain.1.sh@gmail.com"
+          href="mailto:mrsampvt@gmail.com"
           className="text-gray-400 hover:text-purple-400 hover:scale-110 transition-all duration-300"
           aria-label="Email"
         >

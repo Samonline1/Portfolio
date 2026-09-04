@@ -1,7 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const GithubWidget = () => {
+  const [grid, setGrid] = useState<number[][]>([]);
+
+  useEffect(() => {
+    setGrid(
+      Array.from({ length: 53 }).map(() =>
+        Array.from({ length: 7 }).map(() => Math.floor(Math.random() * 5))
+      )
+    );
+  }, []);
+
+  const displayGrid = grid.length > 0 
+    ? grid 
+    : Array.from({ length: 53 }).map(() => Array.from({ length: 7 }).map(() => 0));
+
   return (
 <div className="flex-1 w-full max-w-[624px] bg-black/40 backdrop-blur-xl rounded-3xl border border-white/20 p-4 sm:p-5 text-white shadow-2xl relative overflow-hidden">
 
@@ -23,12 +37,10 @@ export const GithubWidget = () => {
   <div className="relative z-10 overflow-x-auto no-scrollbar">
     <div className="flex gap-[5px] min-w-max ">
 
-      {Array.from({ length: 53 }).map((_, week) => (
-        <div key={week} className="flex flex-col gap-[5px]">
+      {displayGrid.map((week, weekIndex) => (
+        <div key={weekIndex} className="flex flex-col gap-[5px]">
 
-          {Array.from({ length: 7 }).map((_, day) => {
-
-            const level = Math.floor(Math.random() * 5);
+          {week.map((level, dayIndex) => {
 
             const levels = [
               "bg-white/5",
@@ -40,7 +52,7 @@ export const GithubWidget = () => {
 
             return (
               <div
-                key={day}
+                key={dayIndex}
                 className={`w-[8px] h-[8px] sm:w-[8px] sm:h-[8px] rounded-[3px] ${levels[level]} transition-all hover:scale-125`}
               />
             );
