@@ -18,7 +18,6 @@ import { AnimatedCloudBackground } from "./AnimatedCloudBackground";
 import { ProfileWidget } from "./ProfileWidget";
 import { GithubWidget } from "./GithubWidget";
 import { ExperienceWidget } from "./ExperienceWidget";
-import { LockScreen } from "./LockScreen";
 import { FaFolder, FaTerminal, FaUser, FaBriefcase, FaCode, FaEnvelope, FaFilePdf, FaStar } from "react-icons/fa";
 
 const AppRenderer = ({ windowState }: { windowState: WindowState }) => {
@@ -38,7 +37,6 @@ const AppRenderer = ({ windowState }: { windowState: WindowState }) => {
 export const DesktopEnvironment = () => {
   const { windows, openWindow } = useWindowManager();
   const [isMobile, setIsMobile] = useState(false);
-  const [isLocked, setIsLocked] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -50,8 +48,6 @@ export const DesktopEnvironment = () => {
   return (
     <div className="fixed inset-0 overflow-hidden text-white select-none">
       <AnimatedCloudBackground />
-
-      {isLocked && <LockScreen onUnlock={() => setIsLocked(false)} />}
 
       <MenuBar />
 
