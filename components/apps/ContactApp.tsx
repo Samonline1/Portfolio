@@ -19,10 +19,10 @@ export const ContactApp = () => {
 
         <div className="space-y-4">
           <a 
-            href="mailto:sameerhussain.1.sh@gmail.com"
+            href="mailto:mrsampvt@gmail.com"
             className="flex items-center justify-center gap-3 w-full p-4 rounded-xl bg-purple-600 hover:bg-purple-500 transition-colors font-medium shadow-lg shadow-purple-900/50"
           >
-            <FaEnvelope /> sameerhussain.1.sh@gmail.com
+            <FaEnvelope /> mrsampvt@gmail.com
           </a>
           
           <div className="grid grid-cols-2 gap-4">

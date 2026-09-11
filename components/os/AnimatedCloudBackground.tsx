@@ -10,7 +10,7 @@ export const AnimatedCloudBackground = () => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[linear-gradient(180deg,var(--sky-color,#48a1df)_0%,#72b8e5_45%,#a9d9ef_100%)]"
       aria-hidden="true"
     >
-      <Image className="h-full w-full bg-cover bg-center
+      <Image className="h-full w-full flex-1 lg:bg-cover bg-no-repeat bg-center
       " src={bg} alt="" />
       {/* FAR CLOUDS */}
       <div
